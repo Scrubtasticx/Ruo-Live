@@ -35,10 +35,10 @@ namespace Server.Items
 
             int count = 0;
 
-            if (!Siege.SiegeShard)
-            {
-                count += MoonGen(PMList.Trammel);
-            }
+//            if (!Siege.SiegeShard)
+//            {
+//               count += MoonGen(PMList.Trammel);
+//            }
 
             count += MoonGen(PMList.Felucca);
             count += MoonGen(PMList.Ilshenar);
@@ -291,23 +291,23 @@ namespace Server.Items
 
     public class PMList
     {
-        public static readonly PMList Trammel = new PMList(
-            1012000,
-            1012012,
-            Map.Trammel,
-            new[]
-            {
-                new PMEntry(new Point3D(4467, 1283, 5), 1012003), // Moonglow
-				new PMEntry(new Point3D(1336, 1997, 5), 1012004), // Britain
-				new PMEntry(new Point3D(1499, 3771, 5), 1012005), // Jhelom
-				new PMEntry(new Point3D(771, 752, 5), 1012006), // Yew
-				new PMEntry(new Point3D(2701, 692, 5), 1012007), // Minoc
-				new PMEntry(new Point3D(1828, 2948, -20), 1012008), // Trinsic
-				new PMEntry(new Point3D(643, 2067, 5), 1012009), // Skara Brae
-				/* Dynamic Z for Magincia to support both old and new maps. */
-				new PMEntry(new Point3D(3563, 2139, Map.Trammel.GetAverageZ(3563, 2139)), 1012010), // (New) Magincia
-				new PMEntry(new Point3D(3450, 2677, 25), 1078098) // New Haven
-			});
+//        public static readonly PMList Trammel = new PMList(
+//            1012000,
+//            1012012,
+//            Map.Trammel,
+//            new[]
+//            {
+//                new PMEntry(new Point3D(4467, 1283, 5), 1012003), // Moonglow
+//				new PMEntry(new Point3D(1336, 1997, 5), 1012004), // Britain
+//				new PMEntry(new Point3D(1499, 3771, 5), 1012005), // Jhelom
+//				new PMEntry(new Point3D(771, 752, 5), 1012006), // Yew
+//				new PMEntry(new Point3D(2701, 692, 5), 1012007), // Minoc
+//				new PMEntry(new Point3D(1828, 2948, -20), 1012008), // Trinsic
+//				new PMEntry(new Point3D(643, 2067, 5), 1012009), // Skara Brae
+//				/* Dynamic Z for Magincia to support both old and new maps. */
+//				new PMEntry(new Point3D(3563, 2139, Map.Trammel.GetAverageZ(3563, 2139)), 1012010), // (New) Magincia
+//				new PMEntry(new Point3D(3450, 2677, 25), 1078098) // New Haven
+//			});
 
         public static readonly PMList Felucca = new PMList(
             1012001,
@@ -375,12 +375,12 @@ namespace Server.Items
 				new PMEntry(new Point3D(719, 1863, 40), 1156262) // Valley of Eodon
             });
 
-        public static readonly PMList[] Lists = { Trammel, Felucca, Ilshenar, Malas, Tokuno, TerMur };
-        public static readonly PMList[] ListsYoung = { Trammel, Ilshenar, Malas, Tokuno, TerMur };
+        public static readonly PMList[] Lists = { /*Trammel, */Felucca, Ilshenar, Malas, Tokuno, TerMur };
+        public static readonly PMList[] ListsYoung = { /*Trammel, */Ilshenar, Malas, Tokuno, TerMur };
         public static readonly PMList[] RedLists = { Felucca };
         public static readonly PMList[] SigilLists = { Felucca };
 
-        public static readonly PMList[] AllLists = { Trammel, Felucca, Ilshenar, Malas, Tokuno, TerMur };
+        public static readonly PMList[] AllLists = { /*Trammel, */Felucca, Ilshenar, Malas, Tokuno, TerMur };
 
         public static PMList GetList(Map map)
         {
@@ -389,10 +389,10 @@ namespace Server.Items
                 return null;
             }
 
-            if (map == Map.Trammel)
-            {
-                return Trammel;
-            }
+//            if (map == Map.Trammel)
+//            {
+//                return Trammel;
+//            }
 
             if (map == Map.Felucca)
             {
