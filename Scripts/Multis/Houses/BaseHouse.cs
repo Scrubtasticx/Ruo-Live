@@ -1887,7 +1887,7 @@ namespace Server.Multis
             }
             else
             {
-                from.SendLocalizedMessage(502117); // You already have a trash barrel!
+                m_Trash.MoveToWorld(from.Location, from.Map); //RedemptionUO Original value from.SendLocalizedMessage( 502117 ); // You already have a trash barrel!
             }
         }
 
