@@ -26,8 +26,10 @@ namespace Server.Gumps
         ListFriend,
         RemoveBan,
         ListBan,
-        RemoveAccess,
-        ListAccess,
+/*RedemptionUO Start		
+		RemoveAccess,
+		ListAccess,
+RedemptionUO End*/		
         ChangePost,
         Vendors
     }
@@ -236,16 +238,18 @@ namespace Server.Gumps
             if (!isFriend)
                 return;
 
-            if (house.Public)
-            {
-                AddButtonLabeled(10, 390, GetButtonID(0, 0), 1060674); // Banish
-                AddButtonLabeled(10, 410, GetButtonID(0, 1), 1011261); // Lift a Ban
-            }
-            else
-            {
-                AddButtonLabeled(10, 390, GetButtonID(0, 2), 1060676); // Grant Access
-                AddButtonLabeled(10, 410, GetButtonID(0, 3), 1060677); // Revoke Access
-            }
+            if ( house != null ) //RedemptionUO Original value house.Public
+			{
+				AddButtonLabeled( 10, 390, GetButtonID( 0, 0 ), 1060674 ); // Banish
+				AddButtonLabeled( 10, 410, GetButtonID( 0, 1 ), 1011261 ); // Lift a Ban
+			}
+/*RedemptionUO Start
+			else
+			{
+				AddButtonLabeled( 10, 390, GetButtonID( 0, 2 ), 1060676 ); // Grant Access
+				AddButtonLabeled( 10, 410, GetButtonID( 0, 3 ), 1060677 ); // Revoke Access
+			}
+RedemptionUO End*/
 
             AddPageButton(10, 10, GetButtonID(1, 0), 1060668, HouseGumpPage.Information);
             AddPageButton(10, 30, GetButtonID(1, 1), 1060669, HouseGumpPage.Security);
@@ -322,8 +326,8 @@ namespace Server.Gumps
                         }
                         else
                         {
-                            AddButtonLabeled(10, 310, GetButtonID(3, 10), 1060699); // View Access List
-                            AddButtonLabeled(10, 330, GetButtonID(3, 11), 1060700); // Clear Access List
+                            AddButtonLabeled(10, 310, GetButtonID(3, 8), 1011260); // View Ban List
+                            AddButtonLabeled(10, 330, GetButtonID(3, 9), 1060698); // Clear Ban List
 
                             AddHtmlLocalized(245, 130, 240, 20, 1060695, SelectedColor, false, false); // Change to Private
 
@@ -538,18 +542,20 @@ namespace Server.Gumps
                         AddList(house.Bans, -1, true, true, from);
                         break;
                     }
-                case HouseGumpPage.RemoveAccess:
-                    {
-                        AddHtmlLocalized(10, 120, 400, 20, 1060732, LabelColor, false, false); // <CENTER>ACCESS LIST</CENTER>
-                        AddList(house.Access, 13, false, true, from);
-                        break;
-                    }
-                case HouseGumpPage.ListAccess:
-                    {
-                        AddHtmlLocalized(10, 120, 400, 20, 1060732, LabelColor, false, false); // <CENTER>ACCESS LIST</CENTER>
-                        AddList(house.Access, -1, false, true, from);
-                        break;
-                    }
+                /*RedemptionUO Start
+				case HouseGumpPageAOS.RemoveAccess:
+				{
+					AddHtmlLocalized( 10, 120, 400, 20, 1060732, LabelColor, false, false ); // <CENTER>ACCESS LIST</CENTER>
+					AddList( house.Access, 13, false, true, from );
+					break;
+				}
+				case HouseGumpPageAOS.ListAccess:
+				{
+					AddHtmlLocalized( 10, 120, 400, 20, 1060732, LabelColor, false, false ); // <CENTER>ACCESS LIST</CENTER>
+					AddList( house.Access, -1, false, true, from );
+					break;
+				}
+RedemptionUO End*/			
                 case HouseGumpPage.ChangePost:
                     {
                         int index = 0;
@@ -918,24 +924,26 @@ namespace Server.Gumps
 
                                     break;
                                 }
-                            case 2: // Grant Access
-                                {
-                                    if (!m_House.Public)
-                                    {
-                                        from.SendLocalizedMessage(1060711); // Target the person you would like to grant access to.
-                                        from.Target = new HouseAccessTarget(m_House);
-                                    }
+ /*RedemptionUO Start						
+						case 2: // Grant Access
+						{
+							if ( !m_House.Public )
+							{
+								from.SendLocalizedMessage( 1060711 ); // Target the person you would like to grant access to.
+								from.Target = new HouseAccessTarget( m_House );
+							}
 
-                                    break;
-                                }
-                            case 3: // Revoke Access
-                                {
-                                    if (!m_House.Public)
-                                        from.SendGump(new HouseGump(HouseGumpPage.RemoveAccess, from, m_House));
+							break;
+						}
+						case 3: // Revoke Access
+						{
+							if ( !m_House.Public )
+								from.SendGump( new HouseGumpAOS( HouseGumpPageAOS.RemoveAccess, from, m_House ) );
 
-                                    break;
-                                }
-                        }
+							break;
+						}
+RedemptionUO End*/						
+                      }
 
                         break;
                     }
@@ -1044,18 +1052,20 @@ namespace Server.Gumps
 
                                     break;
                                 }
-                            case 10: // View Access List
-                                {
-                                    from.SendGump(new HouseGump(HouseGumpPage.ListAccess, from, m_House));
+                            /*RedemptionUO Start					
+						case 10: // View Access List
+						{
+							from.SendGump( new HouseGumpAOS( HouseGumpPageAOS.ListAccess, from, m_House ) );
 
-                                    break;
-                                }
-                            case 11: // Clear Access List
-                                {
-                                    from.SendGump(new WarningGump(1060635, 30720, 1061842, 32512, 420, 280, ClearAccess_Callback, m_House));
+							break;
+						}
+						case 11: // Clear Access List
+						{
+							from.SendGump( new WarningGump( 1060635, 30720, 1061842, 32512, 420, 280, new WarningGumpCallback( ClearAccess_Callback ), m_House ) );
 
-                                    break;
-                                }
+							break;
+						}
+RedemptionUO End*/
                             case 12: // Make Private
                                 {
                                     if (isOwner)
@@ -1509,20 +1519,22 @@ namespace Server.Gumps
 
                         break;
                     }
-                case 13:
-                    {
-                        if (m_List != null && index >= 0 && index < m_List.Count)
-                        {
-                            m_House.RemoveAccess(from, m_List[index]);
+                /*RedemptionUO Start				
+				case 13:
+				{
+					if ( m_List != null && index >= 0 && index < m_List.Count )
+					{
+						m_House.RemoveAccess( from, (Mobile)m_List[index] );
 
-                            if (m_House.Access.Count > 0)
-                                from.SendGump(new HouseGump(HouseGumpPage.RemoveAccess, from, m_House));
-                            else
-                                from.SendGump(new HouseGump(HouseGumpPage.Security, from, m_House));
-                        }
+						if ( m_House.Access.Count > 0 )
+							from.SendGump( new HouseGumpAOS( HouseGumpPageAOS.RemoveAccess, from, m_House ) );
+						else
+							from.SendGump( new HouseGumpAOS( HouseGumpPageAOS.Security, from, m_House ) );
+					}
 
-                        break;
-                    }
+					break;
+				}
+RedemptionUO End*/		
                 case 14:
                     {
                         if (isOwner && isCustomizable && index >= 0 && index < m_PostNumbers.Length)

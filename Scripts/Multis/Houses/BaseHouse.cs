@@ -2771,10 +2771,12 @@ namespace Server.Multis
             {
                 from.SendLocalizedMessage(501352); // You may not eject someone who is not in your house!
             }
+/*			
             else if (!Public && IsAosRules)
             {
                 from.SendLocalizedMessage(1062521); // You cannot ban someone from a private house.  Revoke their access instead.
             }
+*/
             else if (targ is BaseCreature && ((BaseCreature)targ).NoHouseRestrictions)
             {
                 from.SendLocalizedMessage(1062040); // You cannot ban that.
@@ -2819,11 +2821,12 @@ namespace Server.Multis
         {
             if (!IsOwner(from) || CoOwners == null || Friends == null)
                 return;
-
+/*
             if (IsOwner(targ))
             {
                 from.SendLocalizedMessage(501360); // This person is already the house owner!
             }
+*/
             else if (Friends.Contains(targ))
             {
                 from.SendLocalizedMessage(501361); // This person is a friend of the house. Remove them first.
@@ -2930,11 +2933,12 @@ namespace Server.Multis
         {
             if (!IsCoOwner(from) || Friends == null || CoOwners == null)
                 return;
-
+/*
             if (IsOwner(targ))
             {
                 from.SendLocalizedMessage(501370); // This person is already an owner of the house!
             }
+			*/
             else if (CoOwners.Contains(targ))
             {
                 from.SendLocalizedMessage(501369); // This person is already on your co-owner list!
