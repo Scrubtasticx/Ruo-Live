@@ -44,6 +44,18 @@ namespace Server.Misc
             }
 
             PackItem(new Gold(1000)); // Starting gold can be customized here
+			//RedemptionUO Start			
+			//PackItem( new Spellbook( UInt64.MaxValue ) );
+			
+			Account account = (Account)m.Account;
+				if(account.GetTag("AlreadyGotTheirGold") == null)
+			{
+			//	PackItem( new StatBall() );
+			//	PackItem( new SkillBall() );
+			//	PackItem( new BankCheck( 100000 ) );
+				account.SetTag("AlreadyGotTheirGold", "True");
+			}
+//RedemptionUO End			
         }
 
         private static void AddShirt(Mobile m, int shirtHue)

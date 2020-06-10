@@ -1,0 +1,16 @@
+Britain Bank 1434 1688 20
+Buccs Bank 2737 2182 -1
+Cove Bank 2228 1205 0
+Jhelom Bank 1375 3842 0
+Magincina Bank 3735 2162 20
+Minoc Bank 2506 563 0
+Moonglow Bank 4470 1163 20
+Nujel`m Bank 3763 1322 21
+Ocllo Bank 3702 2504 0
+Serpents Bank 2928 3375 15
+Skara Bank 580 2143 0
+Trinsic Bank 1812 2828 20
+Vesper Bank 2889 685 0
+Yew Abbey 663 809 20
+Delucia Bank 5266 3989 37
+Papua Bank 5675 3142 12

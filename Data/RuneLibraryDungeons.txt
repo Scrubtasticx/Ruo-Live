@@ -1,0 +1,16 @@
+Covetous Entrance 2502 920 0 
+Deceit Entrance 4114 432 5 
+Despise Entrance 1298 1078 0 
+Destard Entrance 1179 2636 0 
+Fire Entrance 5767 2905 13
+Hythloth Entrance 4724 3821 0 
+Ice Entrance 1997 79 7 
+Ice LL 5209 2319 32
+Shame Entrance 516 1560 0 
+Wrong Entrance 2047 235 13
+Terathan Entrance 5497 3218 1 
+Terathan East 5454 3136 -60
+Psg Trinsic 1627 3321 0 
+Psg CityDead 5139 3663 31
+Psg Delucia 5154 4060 37 
+Psg Britain 1510 1639 20

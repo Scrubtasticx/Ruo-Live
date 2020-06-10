@@ -9,36 +9,42 @@
 **************************************/
 
 using System;
-using System.Collections.Generic;
 using Server;
-using Server.Items;
 
 namespace Joeku.SR
 {
-	// Legacy... binary serialization only used in v1.00, deserialization preserved to migrate data.
-	public class SR_Persistence : Item
-	{
-		public SR_Persistence(){}
-		public SR_Persistence(Serial serial) : base( serial ){}
+    // Legacy... binary serialization only used in v1.00, deserialization preserved to migrate data.
+    public class SR_Persistence : Item
+    {
+        public SR_Persistence()
+        {
+        }
 
-		public override void Serialize(GenericWriter writer)
-		{ base.Serialize(writer); }
+        public SR_Persistence(Serial serial)
+            : base(serial)
+        {
+        }
 
-		public override void Deserialize(GenericReader reader)
-		{
-			base.Deserialize(reader);
-			int version = reader.ReadInt();
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
 
-			Console.WriteLine();
-			Console.WriteLine();
-			Console.WriteLine("Joeku's Staff Runebook: Loading...");
-			Console.WriteLine("  Migrating data from version 1.00... ");
-			int count = reader.ReadInt();
-			for( int i = 0; i < count; i++ )
-				SR_RuneAccount.Deserialize( reader, version );
-			Console.WriteLine();
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
 
-			this.Delete();
-		}
-	}
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Joeku's Staff Runebook: Loading...");
+            Console.WriteLine("  Migrating data from version 1.00... ");
+            int count = reader.ReadInt();
+            for (int i = 0; i < count; i++)
+                SR_RuneAccount.Deserialize(reader, version);
+            Console.WriteLine();
+
+            this.Delete();
+        }
+    }
 }
