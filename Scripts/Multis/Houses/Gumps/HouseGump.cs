@@ -26,8 +26,10 @@ namespace Server.Gumps
         ListFriend,
         RemoveBan,
         ListBan,
+/*RedemptionUO Start
         RemoveAccess,
         ListAccess,
+RedemptionUO End*/
         ChangePost,
         Vendors
     }
@@ -236,16 +238,18 @@ namespace Server.Gumps
             if (!isFriend)
                 return;
 
-            if (house.Public)
+            if (house !=null)
             {
                 AddButtonLabeled(10, 390, GetButtonID(0, 0), 1060674); // Banish
                 AddButtonLabeled(10, 410, GetButtonID(0, 1), 1011261); // Lift a Ban
             }
+/*RedemptionUO Start
             else
             {
                 AddButtonLabeled(10, 390, GetButtonID(0, 2), 1060676); // Grant Access
                 AddButtonLabeled(10, 410, GetButtonID(0, 3), 1060677); // Revoke Access
             }
+RedemptionUO End*/
 
             AddPageButton(10, 10, GetButtonID(1, 0), 1060668, HouseGumpPage.Information);
             AddPageButton(10, 30, GetButtonID(1, 1), 1060669, HouseGumpPage.Security);
@@ -322,8 +326,8 @@ namespace Server.Gumps
                         }
                         else
                         {
-                            AddButtonLabeled(10, 310, GetButtonID(3, 10), 1060699); // View Access List
-                            AddButtonLabeled(10, 330, GetButtonID(3, 11), 1060700); // Clear Access List
+                            AddButtonLabeled(10, 310, GetButtonID(3, 8), 1011260); // View Ban List
+                            AddButtonLabeled(10, 330, GetButtonID(3, 9), 1060698); // Clear Ban List
 
                             AddHtmlLocalized(245, 130, 240, 20, 1060695, SelectedColor, false, false); // Change to Private
 
@@ -538,6 +542,7 @@ namespace Server.Gumps
                         AddList(house.Bans, -1, true, true, from);
                         break;
                     }
+/*RedemptionUO Start
                 case HouseGumpPage.RemoveAccess:
                     {
                         AddHtmlLocalized(10, 120, 400, 20, 1060732, LabelColor, false, false); // <CENTER>ACCESS LIST</CENTER>
@@ -550,6 +555,7 @@ namespace Server.Gumps
                         AddList(house.Access, -1, false, true, from);
                         break;
                     }
+RedemptionUO End*/
                 case HouseGumpPage.ChangePost:
                     {
                         int index = 0;
@@ -903,7 +909,7 @@ namespace Server.Gumps
                         {
                             case 0: // Banish
                                 {
-                                    if (m_House.Public)
+                                    if (m_House !=null)
                                     {
                                         from.SendLocalizedMessage(501325); // Target the individual to ban from this house.
                                         from.Target = new HouseBanTarget(true, m_House);
@@ -913,11 +919,12 @@ namespace Server.Gumps
                                 }
                             case 1: // Lift Ban
                                 {
-                                    if (m_House.Public)
+                                    if (m_House !=null)
                                         from.SendGump(new HouseGump(HouseGumpPage.RemoveBan, from, m_House));
 
                                     break;
                                 }
+/*RedemptionUO Start
                             case 2: // Grant Access
                                 {
                                     if (!m_House.Public)
@@ -935,6 +942,7 @@ namespace Server.Gumps
 
                                     break;
                                 }
+RedemptionUO End*/
                         }
 
                         break;
@@ -1044,6 +1052,7 @@ namespace Server.Gumps
 
                                     break;
                                 }
+/*RedemptionUO Start
                             case 10: // View Access List
                                 {
                                     from.SendGump(new HouseGump(HouseGumpPage.ListAccess, from, m_House));
@@ -1056,6 +1065,7 @@ namespace Server.Gumps
 
                                     break;
                                 }
+RedemptionUO End*/
                             case 12: // Make Private
                                 {
                                     if (isOwner)
@@ -1509,6 +1519,7 @@ namespace Server.Gumps
 
                         break;
                     }
+/*RedemptionUO Start					
                 case 13:
                     {
                         if (m_List != null && index >= 0 && index < m_List.Count)
@@ -1523,6 +1534,7 @@ namespace Server.Gumps
 
                         break;
                     }
+RedemptionUO End*/
                 case 14:
                     {
                         if (isOwner && isCustomizable && index >= 0 && index < m_PostNumbers.Length)
