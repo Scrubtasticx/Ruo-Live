@@ -1,11 +1,31 @@
 using System;
+using Server;
+using Server.Items;
+//RedemptionUO Start
+using System.Collections;
+using System.Collections.Generic;
+using Server.Network;
+using Server.Gumps;
+using Server.Multis;
+using Server.ContextMenus;
+//RedemptionUO End
 
 namespace Server.Items
 {
-    public class PotionKeg : Item
+    public class PotionKeg : Item, ISecurable //RedemptionUO Original value remove ISecurable
     {
         private PotionEffect m_Type;
         private int m_Held;
+//RedemptionUO Start		
+        private SecureLevel m_Level;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public SecureLevel Level
+        {
+            get { return m_Level; }
+            set { m_Level = value; }
+        }
+//RedemptionUO End
         [Constructable]
         public PotionKeg()
             : base(0x1940)
@@ -89,6 +109,7 @@ namespace Server.Items
 
             writer.Write((int)m_Type);
             writer.Write(m_Held);
+			writer.Write( (int) m_Level); //RedemptionUO Original value remove line
         }
 
         public override void Deserialize(GenericReader reader)
@@ -104,6 +125,7 @@ namespace Server.Items
                     {
                         m_Type = (PotionEffect)reader.ReadInt();
                         m_Held = reader.ReadInt();
+						m_Level = (SecureLevel)reader.ReadInt(); //RedemptionUO Original value remove line
 
                         break;
                     }
@@ -145,7 +167,17 @@ namespace Server.Items
                 number = 502258; // The keg is completely full.
 
             list.Add(number);
-        }
+ //RedemptionUO Start			
+		}
+
+        public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
+        {
+            base.GetContextMenuEntries(from, list);
+
+            SetSecureLevelEntry.AddTo(from, this, list);
+//RedemptionUO End            
+		}
+		
 
         public override void OnDoubleClick(Mobile from)
         {

@@ -244,10 +244,10 @@ namespace Server.Misc
             double gc = (double)(from.Skills.Cap - from.Skills.Total) / from.Skills.Cap;
 
             gc += (skill.Cap - skill.Base) / skill.Cap;
-            gc /= 2;
+            gc /= 1;
 
             gc += (1.0 - chance) * (success ? 0.5 : 0.0);
-            gc /= 2;
+            gc /= 1;
 
             gc *= skill.Info.GainFactor;
 
@@ -375,7 +375,7 @@ namespace Server.Misc
                     }
                 }
 
-                if (toGain == 1 && skill.Base <= 10.0)
+                if (toGain == 1 && skill.Base <= 80.0)
                     toGain = Utility.Random(4) + 1;
 
                 #region Mondain's Legacy
