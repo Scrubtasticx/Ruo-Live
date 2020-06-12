@@ -1,0 +1,158 @@
+<!DOCTYPE profile>
+<profile>
+ <data name="CommandPrefix">0x0</data>
+ <data name="UseObjectsQueue">False</data>
+ <data name="ShowCorpseNames">True</data>
+ <data name="ShowCreatureNames">False</data>
+ <data name="OpenCorpses">True</data>
+ <data name="OpenCorpsesRange">0x2</data>
+ <data name="ShowMobileHits">False</data>
+ <data name="PositionInTitle">False</data>
+ <data name="ForceResolution">True</data>
+ <data name="GameWindowWidth">0x640</data>
+ <data name="GameWindowHeight">0x384</data>
+ <data name="FilterLight">True</data>
+ <data name="FilterMusic">True</data>
+ <data name="FilterBardsMusic">False</data>
+ <data name="FilterSound">False</data>
+ <data name="FilterWeather">True</data>
+ <data name="FilterSeason">False</data>
+ <data name="FixedSeason">0x0</data>
+ <data name="FilterDeath">False</data>
+ <data name="FilterRepeatedMessages">False</data>
+ <data name="FilterOthersSpeechColor">False</data>
+ <data name="FilterSnoopingMessages">True</data>
+ <data name="FilterTradeWindow">False</data>
+ <data name="FilterRewardGump">False</data>
+ <data name="HandsBeforePotions">True</data>
+ <data name="HandsBeforeCasting">False</data>
+ <data name="SmartTarget">0x0</data>
+ <data name="SmartTargetRange">False</data>
+ <data name="SmartTargetRangeValue">0xc</data>
+ <data name="HighlightCurrentTarget">True</data>
+ <data name="BlockInvalidHeal">False</data>
+ <data name="ActionDelay">0x258</data>
+ <data name="UseObjectsLimit">0x5</data>
+ <data name="TargetShare">0x0</data>
+ <data name="MountSerial">0xffffffff</data>
+ <data name="BladeSerial">0xffffffff</data>
+ <data name="BoneCutter">False</data>
+ <data name="AutoMount">True</data>
+ <data name="AutoBandage">False</data>
+ <data name="AutoBandageTarget">0x4</data>
+ <data name="AutoBandageScale">False</data>
+ <data name="AutoBandageCount">False</data>
+ <data name="AutoBandageStart">True</data>
+ <data name="AutoBandageStartValue">0x5f</data>
+ <data name="AutoBandageDelay">0x1194</data>
+ <data name="AutoBandageFormula">False</data>
+ <data name="AutoBandageHidden">True</data>
+ <data name="OpenDoors">True</data>
+ <data name="UseDoors">False</data>
+ <data name="SpellsColor">False</data>
+ <data name="SpellsMode">0x2</data>
+ <data name="SpellsTargetShare">0x0</data>
+ <data name="OpenDoorsMode">0x0</data>
+ <data name="OpenCorpsesMode">0x3</data>
+ <data name="ShowMobileFlags">False</data>
+ <data name="StateHighlightMode">0x0</data>
+ <data name="StaticFields">False</data>
+ <data name="CountStealthSteps">False</data>
+ <data name="FriendsListOnly">False</data>
+ <data name="FriendsParty">False</data>
+ <data name="MoveConflictingItems">False</data>
+ <data name="CustomCaption">True</data>
+ <data name="CustomCaptionMode">0x1</data>
+ <data name="CustomCaptionText">UO - $name $statusbar - $hits/$mana/$stam</data>
+ <data name="WarnCounters">True</data>
+ <data name="WarnCountersValue">0x5</data>
+ <data name="HighlightReagents">True</data>
+ <data name="DisplayCountersName">False</data>
+ <data name="CaptionUseNotoHue">True</data>
+ <data name="CaptionUseNotoHue">True</data>
+ <data name="DisplayCountersImage">True</data>
+ <data name="FilterKarmaMessages">False</data>
+ <data name="FilterFameMessages">False</data>
+ <data name="PreventDismount">False</data>
+ <data name="PreventAttackFriends">False</data>
+ <data name="AutoSearchContainers">True</data>
+ <data name="AutoAcceptParty">True</data>
+ <data name="StaticFieldsMode">0x0</data>
+ <friends>
+  <friend name="Admin">0x75</friend>
+ </friends>
+ <counters>
+  <counter graphic="0xf8f" image="True" format="cntr" color="0x0" name="Grave Dust" enabled="True"/>
+  <counter graphic="0xf8e" image="True" format="cntr-2" color="0x0" name="Nox Crystal" enabled="True"/>
+  <counter graphic="0xf8a" image="True" format="cntr-3" color="0x0" name="Pig Iron" enabled="True"/>
+  <counter graphic="0xf7d" image="True" format="cntr-4" color="0x0" name="Daemon Blood" enabled="True"/>
+  <counter graphic="0xf7a" image="True" format="cntr-5" color="0x0" name="Black Pearl" enabled="True"/>
+  <counter graphic="0xf86" image="True" format="cntr-6" color="0x0" name="Mandrake Root" enabled="True"/>
+  <counter graphic="0xf84" image="True" format="cntr-7" color="0x0" name="Garlic" enabled="True"/>
+  <counter graphic="0xf85" image="True" format="cntr-8" color="0x0" name="Ginseng" enabled="True"/>
+  <counter graphic="0xf7b" image="True" format="cntr-9" color="0x0" name="Blood Moss" enabled="True"/>
+  <counter graphic="0xf8c" image="True" format="cntr-10" color="0x0" name="Sulfurous Ash" enabled="True"/>
+  <counter graphic="0xf8d" image="True" format="cntr-11" color="0x0" name="Spiders' Silk" enabled="True"/>
+  <counter graphic="0xf88" image="True" format="cntr-12" color="0x0" name="Nightshade" enabled="True"/>
+  <counter graphic="0xeed" image="True" format="cntr-13" color="0x0" name="gold coin" enabled="True"/>
+ </counters>
+ <objects/>
+ <scavenger enabled="False"/>
+ <autosearchexemptions/>
+ <hotkeys>
+  <hotkey param="Leave House" pass="True" action="macro.play" key="0x84c"/>
+  <hotkey param="Trash Barrel" pass="True" action="macro.play" key="0x854"/>
+  <hotkey param="Use Gate" pass="True" action="macro.play" key="0x847"/>
+  <hotkey param="All Kill" pass="True" action="macro.play" key="0x31"/>
+  <hotkey param="All Come" pass="True" action="macro.play" key="0x32"/>
+  <hotkey param="Teleport" pass="True" action="macro.play" key="0x30"/>
+  <hotkey pass="True" action="skills.hiding" key="0x848"/>
+  <hotkey pass="True" action="combat.attack.last" key="0x101"/>
+  <hotkey pass="True" action="targeting.get.enemy.closest.gray.any" key="0x102"/>
+  <hotkey pass="False" action="spells.magery.cure" key="0x70"/>
+  <hotkey pass="True" action="spells.magery.greaterheal" key="0x72"/>
+  <hotkey pass="True" action="spells.magery.heal" key="0x71"/>
+  <hotkey pass="True" action="spells.magery.paralyze" key="0x73"/>
+  <hotkey pass="True" action="spells.magery.explosion" key="0x74"/>
+  <hotkey pass="True" action="spells.magery.energybolt" key="0x75"/>
+  <hotkey pass="True" action="spells.magery.flamestrike" key="0x77"/>
+  <hotkey pass="True" action="spells.magery.lightning" key="0x78"/>
+  <hotkey pass="True" action="targeting.target.self" key="0x7a"/>
+  <hotkey pass="True" action="targeting.target.last" key="0x7b"/>
+ </hotkeys>
+ <macros>
+  <macro loop="False" name="Leave House" interrupt="True">waitforcontext 'self' 3 1000;</macro>
+  <macro loop="False" name="Trash Barrel" interrupt="True">msg 'i wish to place a trash barrel';</macro>
+  <macro loop="False" name="Recall" interrupt="True">if not findobject 'Home' 'any' 'backpack';sysmsg 'Target a runebook with default rune set' '53';promptalias 'Home';endif;msg 'all come';autotargetobject 'Home';cast recall;while findobject mount any ground and @distance mount >= 2;msg 'all come';pause 200;endwhile;useobject! mount;</macro>
+  <macro loop="False" name="Use Gate" interrupt="True">if @usetype! 0xf6c 'any' 'ground' 2;// Inside guards zone, a confirmation gump may appear;if @inregion 'guards';waitforgump 0xdd8b146a 5000;replygump 0xdd8b146a 1;endif;else;sysmsg 'Moongate not found!' 25;endif;</macro>
+  <macro loop="False" name="HP Bar Puller" interrupt="True">paperdoll 'enemy';pause 100;//    Change   ?   x value based on your screen resolution EXAMPLE 800x600 Take the second number and MINUS 40!;clickscreen! 1024 225;</macro>
+  <macro loop="False" name="Pouch Trapper" interrupt="True">// Pouch Trapper by kdivers;// Goes through and traps every pouch on you;clearuseonce;while @findtype 0xe79;cast 'magic trap';waitfortarget 2000;target! 'found';ignoreobject 'found';pause 1000;endwhile;clearignorelist;</macro>
+  <macro loop="True" name="Combat Assistant" interrupt="False">//Zycron's Puch Popper;if paralyzed 'self';if useonce! 0xe79;pause 400;else;headmsg 'OUT OF POUCHES!' 33;sysmsg 'OUT OF POUCHES!' 33;endif;endif;//Zycron's Auto Pots;if not timerexists 'Heal Potion';createtimer 'Heal Potion';endif;if stam &lt; 10;// Refresh potion;usetype! 0xf0b;endif;if poisoned 'self';// Cure potion;usetype! 0xf07;endif;if not yellowhits 'self';if hits &lt; 35 and timer 'Heal Potion' >= 10250;// Heal potion;usetype! 0xf0c;settimer 'Heal Potion' 0;endif;</macro>
+  <macro loop="False" name="Auto Dispel" interrupt="True">//Zycron's Auto Dispel;if @findtype 0xf6c 0x0 ground 1 8;autotargetobject 'found';cast 'dispel field';endif;if @findtype 0xa4 0x0 Ground any 10 or @findtype 0x23e 0x0 ground any 10;autotargetobject! 'found';endif;if @findtype 0xa4 0x0 Ground any 10 or @findtype 0x23e 0x0 ground any 10;target! 'found';endif;cast 'dispel';</macro>
+  <macro loop="True" name="Hide Stealth Trainer" interrupt="True">////////////////////////////////////;//  Go to any public moongate for //;//   this to work. Also, bring a  //;//  form of chest armor, such as  //;//     a ringmail tunic or a      //;//  chainmail tunic. This macro   //;//    is designed for training    //;//         stealth from 0.        //;//                                //;//  Turn on loop and click play!  //;//                                //;//      ~~Made by kdivers~~       //;////////////////////////////////////;if skill 'hiding' &lt; 80;headmsg 'Train your hiding to 80.0 first!';stop;endif;if not findalias 'chest';headmsg 'Select your chest armor';promptalias 'chest';endif;if skill 'stealth' &lt; 80;usetype 0xf6c 'any' 'ground';waitforgump 0xe0e675b8 15000;replygump 0xe0e675b8 1 1;pause 10000;useskill 'stealth';pause 600;usetype 0xf6c 'any' 'ground';waitforgump 0xe0e675b8 15000;replygump 0xe0e675b8 1 0;pause 10000;useskill 'stealth';pause 600;elseif skill 'stealth' &lt; 100;if not @findlayer 'self' 13;@equipitem 'chest' 13;pause 600;endif;usetype 0xf6c 'any' 'ground';waitforgump 0xe0e675b8 15000;replygump 0xe0e675b8 1 1;pause 10000;useskill 'stealth';pause 600;usetype 0xf6c 'any' 'ground';waitforgump 0xe0e675b8 15000;replygump 0xe0e675b8 1 0;pause 10000;useskill 'stealth';pause 600;endif;</macro>
+  <macro loop="True" name="Spell Book Maker" interrupt="True">if not @findobject 'spellbook';sysmsg '!!!! Target Empty Spell Book !!!!' '23';promptalias 'spellbook';endif;if not listexists 'Spells';@createlist 'Spells';endif;if 'list' 'Spells' == '0';@pushlist 'Spells' '2';@pushlist 'Spells' '9';@pushlist 'Spells' '16';@pushlist 'Spells' '23';@pushlist 'Spells' '30';@pushlist 'Spells' '37';@pushlist 'Spells' '44';@pushlist 'Spells' '51';endif;if not listexists 'scrolls';@createlist 'scrolls';endif;if 'list' 'scrolls' == '0';@pushlist 'scrolls' 0x1f2d // Reactive Armor;@pushlist 'scrolls' 0x1f2e // Clumsy;@pushlist 'scrolls' 0x1f2f // Create Food;@pushlist 'scrolls' 0x1f30 // Feeblemind;@pushlist 'scrolls' 0x1f31 // Heal;@pushlist 'scrolls' 0x1f32 // Magic Arrow;@pushlist 'scrolls' 0x1f33 // Night Sight;@pushlist 'scrolls' 0x1f34 // Weaken;@pushlist 'scrolls' 0x1f35 // Agility;@pushlist 'scrolls' 0x1f36 // Cunning;@pushlist 'scrolls' 0x1f37 // Cure;@pushlist 'scrolls' 0x1f38 // Harm;@pushlist 'scrolls' 0x1f39 // Magic Trap;@pushlist 'scrolls' 0x1f3a // Magic Untrap;@pushlist 'scrolls' 0x1f3b // Protection;@pushlist 'scrolls' 0x1f3c // Strength;@pushlist 'scrolls' 0x1f3d // Bless;@pushlist 'scrolls' 0x1f3e // Fireball;@pushlist 'scrolls' 0x1f3f // Magic Lock;@pushlist 'scrolls' 0x1f40 // Poison;@pushlist 'scrolls' 0x1f41 // Telekinesis;@pushlist 'scrolls' 0x1f42 // Teleport;@pushlist 'scrolls' 0x1f43 // Unlock;@pushlist 'scrolls' 0x1f44 // Wall of Stone;@pushlist 'scrolls' 0x1f45 // Arch Cure;@pushlist 'scrolls' 0x1f46 // Arch Protection;@pushlist 'scrolls' 0x1f47 // Curse;@pushlist 'scrolls' 0x1f48 // Fire Field;@pushlist 'scrolls' 0x1f49 // Greater Heal;@pushlist 'scrolls' 0x1f4a // Lightning;@pushlist 'scrolls' 0x1f4b // Mana Drain;@pushlist 'scrolls' 0x1f4c // Recall;@pushlist 'scrolls' 0x1f4d // Blade Spirit;@pushlist 'scrolls' 0x1f4e // Dispel Field;@pushlist 'scrolls' 0x1f4f // Incognito;@pushlist 'scrolls' 0x1f50 // Magic Reflection;@pushlist 'scrolls' 0x1f51 // Mind Blast;@pushlist 'scrolls' 0x1f52 // Paralyze;@pushlist 'scrolls' 0x1f53 // Poison Field;@pushlist 'scrolls' 0x1f54 // Summon Creature;@pushlist 'scrolls' 0x1f55 // Dispel;@pushlist 'scrolls' 0x1f56 // Energy Bolt;@pushlist 'scrolls' 0x1f57 // Explosion;@pushlist 'scrolls' 0x1f58 // Invisibility;@pushlist 'scrolls' 0x1f59 // Mark;@pushlist 'scrolls' 0x1f5a // Mass Curse;@pushlist 'scrolls' 0x1f5b // Paralyze Field;@pushlist 'scrolls' 0x1f5c // Reveal;@pushlist 'scrolls' 0x1f5d // Chain Lightning;@pushlist 'scrolls' 0x1f5e // Energy Field;@pushlist 'scrolls' 0x1f5f // Flamestrike;@pushlist 'scrolls' 0x1f60 // Gate Travel;@pushlist 'scrolls' 0x1f61 // Mana Vampire;@pushlist 'scrolls' 0x1f62 // Mass Dispel;@pushlist 'scrolls' 0x1f63 // Meteor Swarm;@pushlist 'scrolls' 0x1f64 // Polymorph;@pushlist 'scrolls' 0x1f65 // Earthquake;@pushlist 'scrolls' 0x1f66 // Energy Vortex;@pushlist 'scrolls' 0x1f67 // Ressurrection;@pushlist 'scrolls' 0x1f68 // Summon Air Elemental;@pushlist 'scrolls' 0x1f69 // Summon Daemon;@pushlist 'scrolls' 0x1f6a // Summon Earth Elemental;@pushlist 'scrolls' 0x1f6b // Summon Fire Elemental;@pushlist 'scrolls' 0x1f6c // Summon Water Elemental;endif;if @movetype scrolls[0] 'backpack' 'spellbook' 0 0 0 'any' '1';pause '1000';poplist 'Spells' 'front';poplist 'scrolls' 'front';endif;</macro>
+  <macro loop="False" name="Rune Clone Town" interrupt="True">// Author: Hawt;// Description: Automatic Runebook Cloner.;// You need to insert the names of each rune on the "Names" List. IT will run over and over if a location is blocked untill it makes it passed too the rune.;//===========================================================;//Select runebook to be cloned;removelist 'Runes';removelist 'Towns';promptalias 'ToBeCloned';//Select a blank book;promptalias 'Blank Runebook';//Lists;if not listexists 'Runes';createlist 'Runes';endif;if list 'Runes' == 0;pushlist 'Runes' 5;pushlist 'Runes' 12;pushlist 'Runes' 19;pushlist 'Runes' 26;pushlist 'Runes' 33;pushlist 'Runes' 40;pushlist 'Runes' 47;pushlist 'Runes' 54;pushlist 'Runes' 61;pushlist 'Runes' 68;pushlist 'Runes' 75;pushlist 'Runes' 82;pushlist 'Runes' 89;pushlist 'Runes' 96;pushlist 'Runes' 103;pushlist 'Runes' 110;endif;if not listexists 'Towns';createlist 'Towns';endif;if list 'Towns' == 0;pushlist 'Towns' 'Delucia';pushlist 'Towns' 'Britain';pushlist 'Towns' 'Cove';pushlist 'Towns' 'Jhelom';pushlist 'Towns' 'Skara Brae';pushlist 'Towns' 'Minoc';pushlist 'Towns' 'Bucs';pushlist 'Towns' 'Trinsic';pushlist 'Towns' 'Moonglow';pushlist 'Towns' 'Vesper';pushlist 'Towns' 'Ocllo';pushlist 'Towns' 'Nujelm';pushlist 'Towns' 'Serpents Hold';pushlist 'Towns' 'Yew';pushlist 'Towns' 'Runelibrary';pushlist 'Towns' 'Remmy-Vill';endif;if not @findtype 0x1f14 any 'backpack';sysmsg 'Out of blank runes!' 25;pause 100;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;clearjournal;for 0 to 'Runes';if  mana &lt;= 30;useskill 'Meditation';while not mana == maxmana;endwhile;endif;pause 1500;useobject! 'ToBeCloned';waitforgump 0x554b87f3 15000;pause 900;replygump 0x554b87f3 Runes[0];pause '3500';if injournal 'blocked' 'system';replay;endif;if @findtype 0x1f14 0 'backpack' 1 2;autotargetobject 'found';cast 'Mark';pause 3500;useobject! 'found';waitforprompt 5000;promptmsg Towns[0];pause 1000;moveitem 'found' 'Blank Runebook';pause 1000;if @injournal 'Towns[0]';@poplist 'Towns' 'front';@poplist 'Runes' 'front';endif;else;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;endfor;</macro>
+  <macro loop="False" name="Rune Clown Dungeon" interrupt="True">// Author:Zycron;// Description:Automatic Runebook Cloner.;//You need to insert the names of each rune on the "Names" List. IT will run over and over if a location is blocked untill it makes it passed too the rune.;//===========================================================;//Select runebook to be cloned;removelist 'Runes';removelist 'Dungeons';promptalias 'ToBeCloned';//Select a blank book;promptalias 'Blank Runebook';//Lists;if not listexists 'Runes';createlist 'Runes';endif;if list 'Runes' == 0;pushlist 'Runes' 5;pushlist 'Runes' 12;pushlist 'Runes' 19;pushlist 'Runes' 26;pushlist 'Runes' 33;pushlist 'Runes' 40;pushlist 'Runes' 47;pushlist 'Runes' 54;pushlist 'Runes' 61;pushlist 'Runes' 68;pushlist 'Runes' 75;pushlist 'Runes' 82;pushlist 'Runes' 89;endif;if not listexists 'Dungeons';createlist 'Dungeons';endif;if list 'Dungeons' == 0;pushlist 'Dungeons' 'Covetous';pushlist 'Dungeons' 'Despise';pushlist 'Dungeons' 'Destard';pushlist 'Dungeons' 'Shame';pushlist 'Dungeons' 'Wrong';pushlist 'Dungeons' 'Ice';pushlist 'Dungeons' 'Deceit';pushlist 'Dungeons' 'Hythloth';pushlist 'Dungeons' 'Fire';pushlist 'Dungeons' 'Britain Sewers';pushlist 'Dungeons' 'Minoc Solen';pushlist 'Dungeons' 'Wilderness Solen';pushlist 'Dungeons' 'Yew Solen';endif;if not @findtype 0x1f14 any 'backpack';sysmsg 'Out of blank runes!' 25;pause 100;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;clearjournal;for 0 to 'Runes';if  mana &lt;= 30;useskill 'Meditation';while not mana == maxmana;endwhile;endif;pause 1500;useobject! 'ToBeCloned';waitforgump 0x554b87f3 15000;pause 900;replygump 0x554b87f3 Runes[0];pause '3500';if injournal 'blocked' 'system';replay;endif;if @findtype 0x1f14 0 'backpack' 1 2;autotargetobject 'found';cast 'Mark';pause 3500;useobject! 'found';waitforprompt 5000;promptmsg Dungeons[0];pause 1000;moveitem 'found' 'Blank Runebook';pause 1000;if @injournal 'Dungeons[0]';@poplist 'Dungeons' 'front';@poplist 'Runes' 'front';endif;else;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;endfor;</macro>
+  <macro loop="False" name="Rune Clone Shrines" interrupt="True">// Author: Hawt;// Description: Automatic Runebook Cloner.;// You need to insert the names of each rune on the "Names" List. IT will run over and over if a location is blocked untill it makes it passed too the rune.;//===========================================================;//Select runebook to be cloned;removelist 'Runes';removelist 'Shrines';promptalias 'ToBeCloned';//Select a blank book;promptalias 'Blank Runebook';//Lists;if not listexists 'Runes';createlist 'Runes';endif;if list 'Runes' == 0;pushlist 'Runes' 5;pushlist 'Runes' 12;pushlist 'Runes' 19;pushlist 'Runes' 26;pushlist 'Runes' 33;pushlist 'Runes' 40;pushlist 'Runes' 47;pushlist 'Runes' 54;pushlist 'Runes' 61;endif;if not listexists 'Shrines';createlist 'Shrines';endif;if list 'Shrines' == 0;pushlist 'Shrines' 'Honor';pushlist 'Shrines' 'Chaos';pushlist 'Shrines' 'Compassion';pushlist 'Shrines' 'Honesty';pushlist 'Shrines' 'Spiritulity';pushlist 'Shrines' 'Sacrifice';pushlist 'Shrines' 'Justice';pushlist 'Shrines' 'Humility';pushlist 'Shrines' 'Valor';endif;if not @findtype 0x1f14 any 'backpack';sysmsg 'Out of blank runes!' 25;pause 100;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;clearjournal;for 0 to 'Runes';if  mana &lt;= 30;useskill 'Meditation';while not mana == maxmana;endwhile;endif;pause 1500;useobject! 'ToBeCloned';waitforgump 0x554b87f3 15000;pause 900;replygump 0x554b87f3 Runes[0];pause '3500';if injournal 'blocked' 'system';replay;endif;if @findtype 0x1f14 0 'backpack' 1 2;autotargetobject 'found';cast 'Mark';pause 3500;useobject! 'found';waitforprompt 5000;promptmsg Shrines[0];pause 1000;moveitem 'found' 'Blank Runebook';pause 1000;if @injournal 'Shrines[0]';@poplist 'Shrines' 'front';@poplist 'Runes' 'front';endif;else;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;endfor;</macro>
+  <macro loop="False" name="Rune Clone Mystuff" interrupt="True">// Author: Hawt;// Description: Automatic Runebook Cloner.;// You need to insert the names of each rune on the "Names" List. IT will run over and over if a location is blocked untill it makes it passed too the rune.;//===========================================================;//Select runebook to be cloned;removelist 'Runes';removelist 'Mystuff';promptalias 'ToBeCloned';//Select a blank book;promptalias 'Blank Runebook';//Lists;if not listexists 'Runes';createlist 'Runes';endif;if list 'Runes' == 0;pushlist 'Runes' 5;pushlist 'Runes' 12;pushlist 'Runes' 19;pushlist 'Runes' 26;pushlist 'Runes' 33;pushlist 'Runes' 40;endif;if not listexists 'Mystuff';createlist 'Mystuff';endif;if list 'Mystuff' == 0;pushlist 'Mystuff' 'Macro Spot';pushlist 'Mystuff' 'Cove LL';pushlist 'Mystuff' 'Mikes Crib';pushlist 'Mystuff' 'Cats House';pushlist 'Mystuff' 'House';pushlist 'Mystuff' 'Krono';endif;if not @findtype 0x1f14 any 'backpack';sysmsg 'Out of blank runes!' 25;pause 100;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;clearjournal;for 0 to 'Runes';if  mana &lt;= 30;useskill 'Meditation';while not mana == maxmana;endwhile;endif;pause 1500;useobject! 'ToBeCloned';waitforgump 0x554b87f3 15000;pause 900;replygump 0x554b87f3 Runes[0];pause '3500';if injournal 'blocked' 'system';replay;endif;if @findtype 0x1f14 0 'backpack' 1 2;autotargetobject 'found';cast 'Mark';pause 3500;useobject! 'found';waitforprompt 5000;promptmsg Mystuff[0];pause 1000;moveitem 'found' 'Blank Runebook';pause 1000;if @injournal 'Mystuff[0]';@poplist 'Mystuff' 'front';@poplist 'Runes' 'front';endif;else;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;endfor;</macro>
+  <macro loop="False" name="All Kill" interrupt="True">useobject 'self';pause 100;msg 'all kill';waitfortarget 1000;target! 'last';</macro>
+  <macro loop="True" name="All Come" interrupt="True">cast "Summon Creature";pause 2000;useskill 'Meditation';pause 500;</macro>
+  <macro loop="True" name="Idoc Timer" interrupt="True">//Idoc Timer;if not listexists 'idoc';createlist 'idoc';@pushlist 'idoc' 0xbd2;@pushlist 'idoc' 0xc0c;@pushlist 'idoc' 0xbba;@pushlist 'idoc' 0xba4;@pushlist 'idoc' 0xba6;@pushlist 'idoc' 0xba8;@pushlist 'idoc' 0xbaa;@pushlist 'idoc' 0xbac;@pushlist 'idoc' 0xbae;@pushlist 'idoc' 0xbb0;@pushlist 'idoc' 0xbb2;@pushlist 'idoc' 0xbb4;@pushlist 'idoc' 0xbb6;@pushlist 'idoc' 0xbb8;@pushlist 'idoc' 0xbbc;@pushlist 'idoc' 0xbbe;@pushlist 'idoc' 0xbc0;@pushlist 'idoc' 0xbc2;@pushlist 'idoc' 0xbc4;@pushlist 'idoc' 0xbc6;endif;for 0 to 'idoc';while @findtype idoc[] 'any' 'ground';clickobject 'found';pause 5000;waitforjournal 'danger' 1000 'system';if @injournal 'danger' 'system';guildmsg 'Found a house in danger of collapsing';snapshot;pause 500;clearjournal;endwhile;endfor;endif;</macro>
+  <macro loop="False" name="Rune Clone Cutoff 1" interrupt="True">// Author: Hawt;// Description: Automatic Runebook Cloner.;// You need to insert the names of each rune on the "Names" List. IT will run over and over if a location is blocked untill it makes it passed too the rune.;//===========================================================;//Select runebook to be cloned;removelist 'Runes';removelist 'Cutone';promptalias 'ToBeCloned';//Select a blank book;promptalias 'Blank Runebook';//Lists;if not listexists 'Runes';createlist 'Runes';endif;if list 'Runes' == 0;pushlist 'Runes' 5;pushlist 'Runes' 12;pushlist 'Runes' 19;pushlist 'Runes' 26;pushlist 'Runes' 33;pushlist 'Runes' 40;pushlist 'Runes' 47;pushlist 'Runes' 54;pushlist 'Runes' 61;pushlist 'Runes' 68;pushlist 'Runes' 75;pushlist 'Runes' 82;pushlist 'Runes' 89;pushlist 'Runes' 96;pushlist 'Runes' 103;pushlist 'Runes' 110;endif;if not listexists 'Cutone';createlist 'Cutone';endif;if list 'Cutone' == 0;pushlist 'Cutone' 'West Bank';pushlist 'Cutone' 'TB Base';pushlist 'Cutone' 'GY North';pushlist 'Cutone' 'GY South';pushlist 'Cutone' 'Blacksmith';pushlist 'Cutone' 'West Woods';pushlist 'Cutone' 'Despise Pass North';pushlist 'Cutone' 'Despise Pass South';pushlist 'Cutone' 'West Bridge';pushlist 'Cutone' 'West Stable';pushlist 'Cutone' 'Rune Library';pushlist 'Cutone' 'Moongate';pushlist 'Cutone' 'River Tip';pushlist 'Cutone' 'Trinsic Bridge';pushlist 'Cutone' 'Xroads Pass West';pushlist 'Cutone' 'Xroads Pass East';endif;if not @findtype 0x1f14 any 'backpack';sysmsg 'Out of blank runes!' 25;pause 100;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;clearjournal;for 0 to 'Runes';if  mana &lt;= 30;useskill 'Meditation';while not mana == maxmana;endwhile;endif;pause 1500;useobject! 'ToBeCloned';waitforgump 0x554b87f3 15000;pause 900;replygump 0x554b87f3 Runes[0];pause '3500';if injournal 'blocked' 'system';replay;endif;if @findtype 0x1f14 0 'backpack' 1 2;autotargetobject 'found';cast 'Mark';pause 3500;useobject! 'found';waitforprompt 5000;promptmsg Cutone[0];pause 1000;moveitem 'found' 'Blank Runebook';pause 1000;if @injournal 'Cutone[0]';@poplist 'Cutone' 'front';@poplist 'Runes' 'front';endif;else;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;endfor;</macro>
+  <macro loop="False" name="Rune Clone Cutoff 2" interrupt="True">// Author: Hawt;// Description: Automatic Runebook Cloner.;// You need to insert the names of each rune on the "Names" List. IT will run over and over if a location is blocked untill it makes it passed too the rune.;//===========================================================;//Select runebook to be cloned;removelist 'Runes';removelist 'Cuttwo';promptalias 'ToBeCloned';//Select a blank book;promptalias 'Blank Runebook';//Lists;if not listexists 'Runes';createlist 'Runes';endif;if list 'Runes' == 0;pushlist 'Runes' 5;pushlist 'Runes' 12;pushlist 'Runes' 19;pushlist 'Runes' 26;pushlist 'Runes' 33;pushlist 'Runes' 40;pushlist 'Runes' 47;pushlist 'Runes' 54;pushlist 'Runes' 61;pushlist 'Runes' 68;pushlist 'Runes' 75;pushlist 'Runes' 82;pushlist 'Runes' 89;pushlist 'Runes' 96;pushlist 'Runes' 103;pushlist 'Runes' 110;endif;if not listexists 'Cuttwo';createlist 'Cuttwo';endif;if list 'Cuttwo' == 0;pushlist 'Cuttwo' 'Crossbridge 1';pushlist 'Cuttwo' 'Crossbridge 2';pushlist 'Cuttwo' 'Crossbridge 3';pushlist 'Cuttwo' 'Corssbridge 4';pushlist 'Cuttwo' 'Crossbridge 5';pushlist 'Cuttwo' 'Healer';pushlist 'Cuttwo' 'Faction Sigil';pushlist 'Cuttwo' 'Park';pushlist 'Cuttwo' 'East Bank';pushlist 'Cuttwo' 'East Beach';pushlist 'Cuttwo' 'Snakes Pass North';pushlist 'Cuttwo' 'Snakes Pass South';pushlist 'Cuttwo' 'Road to Swamp 1';pushlist 'Cuttwo' 'Road to Swamp 2';pushlist 'Cuttwo' 'Road to Swamp 3';pushlist 'Cuttwo' 'The Docks';endif;if not @findtype 0x1f14 any 'backpack';sysmsg 'Out of blank runes!' 25;pause 100;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;clearjournal;for 0 to 'Runes';if  mana &lt;= 30;useskill 'Meditation';while not mana == maxmana;endwhile;endif;pause 1500;useobject! 'ToBeCloned';waitforgump 0x554b87f3 15000;pause 900;replygump 0x554b87f3 Runes[0];pause '3500';if injournal 'blocked' 'system';replay;endif;if @findtype 0x1f14 0 'backpack' 1 2;autotargetobject 'found';cast 'Mark';pause 3500;useobject! 'found';waitforprompt 5000;promptmsg Cuttwo[0];pause 1000;moveitem 'found' 'Blank Runebook';pause 1000;if @injournal 'Cuttwo[0]';@poplist 'Cuttwo' 'front';@poplist 'Runes' 'front';endif;else;playsound 984;pause 100;playsound 987;pause 100;playsound 988;pause 100;messagebox 'Error'  '*No Runes restock &amp; restart*';stop;endif;endfor;</macro>
+  <macro loop="False" name="Teleport" interrupt="True">cast 'teleport';waitfortarget 2000;targettilerelative 0x570b -12 true;</macro>
+  <macro loop="False" name="Explo Pot" interrupt="True">usetype 0xf0d;waitfortarget 1500;// throw away target //;canceltarget;// target gone //;clearjournal;while not injournal '2' 'zycron';pause 900;endwhile;usetype 0xf0d;waitfortarget 1500;target 'last';</macro>
+  <macro loop="True" name="Necro" interrupt="False">////////////////////////////////////;//   This macro is designed for   //;//   training Necromancy from 40. //;//                                //;//  Turn on loop and click play!  //;//                                //;//      ~~Made by Vertex101~~     //;////////////////////////////////////;if skill 'Necromancy' &lt; 100;if @injournal 'insufficient mana';clearjournal;useskill 'Meditation';while mana &lt; maxmana;endwhile;else;if skill 'Necromancy' &lt; 40;headmsg 'Please buy skill to continue!';stop;elseif skill 'Necromancy' &lt; 55;cast "Wraith Form";waitfortarget 7000;elseif skill 'Necromancy' &lt; 75;cast "Horrific Beast";waitfortarget 7000;elseif skill 'Necromancy' &lt; 90;cast "Wither";waitfortarget 7000;elseif skill 'Necromancy' &lt; 100;cast "Lich Form";waitfortarget 7000;endif;endif;else;headmsg 'Necromancy complete!';stop;endif;</macro>
+ </macros>
+ <autoloot>
+  <enabled>False</enabled>
+  <container>0xffffffff</container>
+  <guards>False</guards>
+ </autoloot>
+ <organizer/>
+ <spellgrid/>
+ <vendors>
+  <buystate enabled="False" list=""/>
+  <sellstate enabled="False" list=""/>
+ </vendors>
+</profile>
