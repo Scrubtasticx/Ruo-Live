@@ -147,6 +147,7 @@ namespace Server.Items
                     }
 
                     item.BlessedFor = from;
+					item.LootType = LootType.Blessed;
                     from.SendLocalizedMessage(1062204); // You personally bless the item for this character.
                     from.PlaySound(0x202);
                     m_Deed.Delete();

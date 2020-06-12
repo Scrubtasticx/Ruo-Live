@@ -295,6 +295,7 @@ namespace Server.Items
             {
                 m_Item.BlessedFor = null;
                 m_Item.BlessedBy = null;
+				m_Item.LootType = LootType.Regular;
 
                 Container pack = m_From.Backpack;
 
