@@ -5058,6 +5058,11 @@ namespace Server.Mobiles
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
+			
+//Redemption Start			
+			if (AccessLevel > AccessLevel.Player)
+				list.Add(1060847, "{0}\t{1}", "Shard", Enum.GetName(typeof(AccessLevel), AccessLevel));
+//Redemption End
 
             if (m_SubtitleSkillTitle != null)
                 list.Add(1042971, m_SubtitleSkillTitle);
