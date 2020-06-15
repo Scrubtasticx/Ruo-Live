@@ -16,7 +16,7 @@ namespace Felladrin.Automations
         {
             public static bool Enabled = true;      // Is this system enabled?
             public static bool CanWander = true;    // Can the clones wander freely around the world or should they be frozen?
-            public static bool CanTeach = true;     // Can other player train skills with this clone?
+            public static bool CanTeach = false;     // Can other player train skills with this clone?
         }
 
         public static void Initialize()
