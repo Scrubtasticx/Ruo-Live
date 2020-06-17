@@ -135,7 +135,7 @@ namespace Server.Items
 			{
 //	Uncomment the line line below, and add a comment to the line under it to use a defined number instead of the standard Stat Cap
 //				if ( ( ( str + dex + intel ) > Cap ) || ( ( str + dex + intel ) < Cap ) || ( str < 10 ) || ( dex < 10 ) || ( intel < 10 ) )
-				if ( ( ( str + dex + intel ) > m_From.StatCap ) || ( ( str + dex + intel ) < m_From.StatCap ) || ( str < 10 ) || ( dex < 10 ) || ( intel < 10 ) || ( str > 100 ) || ( dex > 100 ) || ( intel > 100 ) )
+				if ( ( ( str + dex + intel ) > m_From.StatCap ) || ( ( str + dex + intel ) < m_From.StatCap ) || ( str < 10 ) || ( dex < 10 ) || ( intel < 10 ) || ( str > 125 ) || ( dex > 125 ) || ( intel > 125 ) )
 					m_From.SendMessage( "Your choice totals are invalid.  Please try again!" );
 					
 				else
