@@ -12,12 +12,12 @@ namespace Server.Gumps
 	{
 		public MostWinsPvpGump() : base( 50, 50 )
 		{
-			Closable=false;
+			Closable=true;
 			Disposable=false;
-			Dragable=false;
+			Dragable=true;
 			Resizable=false;
 			AddPage(0);
-			AddBackground(16, 12, 549, 303, 5120);
+			AddBackground(16, 12, 549, 303, 9300);
 			AddImageTiled(26, 21, 531, 26, 5154);
 			AddAlphaRegion(26, 21, 531, 26);
 			AddButton(28, 50, 4005, 4006, 1, GumpButtonType.Reply, 0);
@@ -71,7 +71,7 @@ namespace Server.Gumps
 			AddAlphaRegion(379, 140, 42, 134);
 			AddAlphaRegion(428, 140, 42, 134);
 			AddAlphaRegion(477, 140, 81, 134);
-			AddButton(264, 285, 4026, 248, 8, GumpButtonType.Reply, 0);
+			AddButton(264, 285, 4026, 4006, 8, GumpButtonType.Reply, 0);
 			AddLabel(299, 286, 1149, @"Help Menu");
 
 			string time = "View top 3 players with most overall wins.";

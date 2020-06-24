@@ -12,7 +12,7 @@ namespace Server.Commands
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "PvpStats", AccessLevel.Player, new CommandEventHandler( PvpStats_OnCommand ) );
+			CommandSystem.Register( "PvpStats", AccessLevel.Owner, new CommandEventHandler( PvpStats_OnCommand ) );
 		}
 
 		[Usage( "PvpStats" )]
@@ -68,7 +68,9 @@ namespace Server.Commands
 			Dragable=true;
 			Resizable=false;
 			AddPage(0);
-			AddBackground(23, 23, 417, 312, 5120);
+			AddBackground(23, 23, 417, 312, 9300);
+//			AddBackground(23, 23, 417, 312, 5120);
+//			AddHtml(35, 25, 1160, 18,  "<BASEFONT COLOR=#000000>Player Vs. Player Statistics", false, false);
 			AddLabel(35, 25, 1160, @"Player Vs. Player Statistics");
 			AddImageTiled(28, 51, 409, 9, 5121);
 			AddLabel(35, 65, 1149, @"Player Name:");
