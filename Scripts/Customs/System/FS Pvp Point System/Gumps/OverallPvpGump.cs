@@ -22,7 +22,7 @@ namespace Server.Gumps
 
 			Closable=false;
 			Disposable=false;
-			Dragable=false;
+			Dragable=true;
 			Resizable=false;
 			AddPage(0);
 			AddBackground(16, 12, 549, 303, 5120);
@@ -79,7 +79,7 @@ namespace Server.Gumps
 			AddAlphaRegion(379, 140, 42, 134);
 			AddAlphaRegion(428, 140, 42, 134);
 			AddAlphaRegion(477, 140, 81, 134);
-			AddButton(264, 285, 4026, 248, 8, GumpButtonType.Reply, 0);
+			AddButton(264, 285, 4026, 4006, 8, GumpButtonType.Reply, 0);
 			AddLabel(299, 286, 1149, @"Help Menu");
 
          		if ( m_List == null )
