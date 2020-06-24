@@ -325,7 +325,7 @@ namespace Server.Mobiles
 			get{ return m_TotalPointsSpent; }
 			set{ m_TotalPointsSpent = value; }
 		}
-
+		
 //End Pvp Point System
 
         private int m_NonAutoreinsuredItems;
@@ -4900,7 +4900,7 @@ namespace Server.Mobiles
 
             base.Serialize(writer);
 
-            writer.Write(41); // version
+			writer.Write(41); // version
 //Start PvP			
 			writer.Write( m_TotalPointsLost );
 			writer.Write( m_TotalPointsSpent );

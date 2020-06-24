@@ -13,7 +13,7 @@ PlayerMobile.cs
 #
 #-----[ ADD, AFTER ]----------------------------
 #
-		//Start Pvp Point System
+//Start Pvp Point System
 
 		private int m_TotalPoints;
 		private int m_TotalWins;
@@ -115,22 +115,20 @@ PlayerMobile.cs
 			get{ return m_TotalPointsSpent; }
 			set{ m_TotalPointsSpent = value; }
 		}
-
-		//End Pvp Point System
+		
+//End Pvp Point System
 
 #
 #-----[ FIND ]----------------------------------
 #
-		public override void GetProperties( ObjectPropertyList list )
-		{
+		list.Add("{0}, {1}", Utility.FixHtml(title), Utility.FixHtml(guild.Name));
+                }
+            }
 
 #
-#-----[ ADD, BEFORE ]----------------------------
+#-----[ ADD, AFTER ]----------------------------
 #
-		public override void AddNameProperties( ObjectPropertyList list )
-		{
-			base.AddNameProperties( list );
-
+		//Start PvP			
 			if ( PvpPointSystem.EnablePointSystem == true && PvpPointSystem.EnableRankSystem == true )
 			{
 				if ( m_PvpRank != null )
@@ -148,18 +146,21 @@ PlayerMobile.cs
 						list.Add( 1060660, "Pvp Rank\tNewbie" );
 				}
 			}
-		}
+//End PvP
 
 #
 #-----[ FIND ]----------------------------------
 #
-			if ( m_InsuranceAward is PlayerMobile )
-				((PlayerMobile)m_InsuranceAward).m_InsuranceBonus = 0;
+			if (m_InsuranceAward is PlayerMobile)
+            {
+                ((PlayerMobile)m_InsuranceAward).m_InsuranceBonus = 0;
 
 #
 #-----[ ADD, AFTER ]----------------------------
 #
-			Mobile kill = FindMostRecentDamager( false );
+
+//Start PvP				
+				Mobile kill = FindMostRecentDamager( false );
 			if ( kill is PlayerMobile )
 			{
 				PlayerMobile killer = (PlayerMobile)kill;
@@ -170,19 +171,20 @@ PlayerMobile.cs
 				if ( PvpPointSystem.EnableRankSystem == true )
 					PvpPointSystem.CheckTitle( this, killer );
 			}
+			
+//End PvP			
 
 #
 #-----[ FIND ]----------------------------------
 #
-			switch ( version )
-			{
+			switch (version)
+            {
 
 #
 #-----[ ADD, AFTER ]----------------------------
 #
-	//NOTE: NEXTCASE is the next case in your Deserialize meaning if the last case was 20 make the new one 21
-
-				case NEXTCASE:
+	//Start PvP				
+				case 41:
 				{
 					m_TotalPointsLost = reader.ReadInt();
 					m_TotalPointsSpent = reader.ReadInt();
@@ -195,51 +197,37 @@ PlayerMobile.cs
 					m_TotalWins = reader.ReadInt();
 					m_TotalLoses = reader.ReadInt();
 					m_PvpRank = reader.ReadString();
-					goto case LASTCASE;
+					goto case 40;
 				}
+//End PvP				
 
 #
 #-----[ FIND ]----------------------------------
 #
-	//NOTE: LASTCASE will be the last case from your Deserialize
+	base.Serialize(writer);
 
-			writer.Write( (int) LASTCASE ); // version
+			writer.Write(
 
 #
 #-----[ CHANGE TO ]----------------------------
 #
-	//NOTE: NEXTCASE will be the case number you just added in your Deserialze
 
-			writer.Write( (int) NEXTCASE ); // version
-
-#
-#-----[ FIND ]----------------------------------
-#
-			writer.Write( (int) ## ); // version
+			writer.Write(41); // version
 
 #
-#-----[ ADD, AFTER ]----------------------------
-#
+#-----[ ADD, RIGHT AFTER ]----------------------------
+//Start PvP			
 			writer.Write( m_TotalPointsLost );
-
 			writer.Write( m_TotalPointsSpent );
-
 			writer.Write( ResKillTime );
-
 			writer.Write( m_LastPwned );
-
 			writer.Write( m_TotalResKills );
-
 			writer.Write( m_TotalResKilled );
-
 			writer.Write( m_LastPwner );
-
 			writer.Write( m_TotalPoints );
-
 			writer.Write( m_TotalWins );
-
 			writer.Write( m_TotalLoses );
-
 			writer.Write( m_PvpRank );
+//End PvP
 
 //NOTE: Your all done. Enjoy :P
