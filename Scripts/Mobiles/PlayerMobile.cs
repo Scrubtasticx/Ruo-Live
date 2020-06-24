@@ -222,6 +222,111 @@ namespace Server.Mobiles
         private PlayerFlag m_Flags;
         private ExtendedPlayerFlag m_ExtendedFlags;
         private int m_Profession;
+		
+//Start Pvp Point System
+
+		private int m_TotalPoints;
+		private int m_TotalWins;
+		private int m_TotalLoses;
+		private int m_TotalResKills;
+		private int m_TotalResKilled;
+		private Mobile m_LastPwner;
+		private Mobile m_LastPwned;
+		private DateTime m_ResKillTime;
+		private int m_TotalPointsLost;
+		private int m_TotalPointsSpent;
+		private string m_PvpRank = "Newbie";
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public string PvpRank
+		{
+			get{ return m_PvpRank; }
+			set{ m_PvpRank = value; InvalidateProperties(); }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int TotalPoints
+		{
+			get{ return m_TotalPoints; }
+			set{ m_TotalPoints = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int TotalWins
+		{
+			get{ return m_TotalWins; }
+			set{ m_TotalWins = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int TotalLoses
+		{
+			get{ return m_TotalLoses; }
+			set{ m_TotalLoses = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int TotalResKills
+		{
+			get{ return m_TotalResKills; }
+			set{ m_TotalResKills = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int TotalResKilled
+		{
+			get{ return m_TotalResKilled; }
+			set{ m_TotalResKilled = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public Mobile LastPwner
+		{
+			get{ return m_LastPwner; }
+			set{ m_LastPwner = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public Mobile LastPwned
+		{
+			get{ return m_LastPwned; }
+			set{ m_LastPwned = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public TimeSpan ResKillTime
+		{
+			get
+			{
+				TimeSpan ts = m_ResKillTime - DateTime.Now;
+
+				if ( ts < TimeSpan.Zero )
+					ts = TimeSpan.Zero;
+
+				return ts;
+			}
+			set
+			{
+				try{ m_ResKillTime = DateTime.Now + value; }
+				catch{}
+			}
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int TotalPointsLost
+		{
+			get{ return m_TotalPointsLost; }
+			set{ m_TotalPointsLost = value; }
+		}
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public int TotalPointsSpent
+		{
+			get{ return m_TotalPointsSpent; }
+			set{ m_TotalPointsSpent = value; }
+		}
+
+//End Pvp Point System
 
         private int m_NonAutoreinsuredItems;
         // number of items that could not be automaitically reinsured because gold in bank was not enough
@@ -2240,8 +2345,9 @@ namespace Server.Mobiles
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
         {
+			
             list.Add(new PaperdollEntry(this));
-
+		 
             if (from == this)
             {
                 if (Alive)
@@ -3587,6 +3693,21 @@ namespace Server.Mobiles
             if (m_InsuranceAward is PlayerMobile)
             {
                 ((PlayerMobile)m_InsuranceAward).m_InsuranceBonus = 0;
+
+//Start PvP				
+				Mobile kill = FindMostRecentDamager( false );
+			if ( kill is PlayerMobile )
+			{
+				PlayerMobile killer = (PlayerMobile)kill;
+				
+				if ( PvpPointSystem.EnablePointSystem == true )
+					PvpPointSystem.GivePoints( this, killer );
+
+				if ( PvpPointSystem.EnableRankSystem == true )
+					PvpPointSystem.CheckTitle( this, killer );
+			}
+			
+//End PvP			
             }
 
             if (m_ReceivedHonorContext != null)
@@ -4296,6 +4417,23 @@ namespace Server.Mobiles
 
             switch (version)
             {
+//Start PvP				
+				case 41:
+				{
+					m_TotalPointsLost = reader.ReadInt();
+					m_TotalPointsSpent = reader.ReadInt();
+					ResKillTime = reader.ReadTimeSpan();
+					m_LastPwned = reader.ReadMobile();
+					m_TotalResKills = reader.ReadInt();
+					m_TotalResKilled = reader.ReadInt();
+					m_LastPwner = reader.ReadMobile();
+					m_TotalPoints = reader.ReadInt();
+					m_TotalWins = reader.ReadInt();
+					m_TotalLoses = reader.ReadInt();
+					m_PvpRank = reader.ReadString();
+					goto case 40;
+				}
+//End PvP				
                 case 40: // Version 40, moved gauntlet points, virtua artys and TOT turn ins to PointsSystem
                 case 39: // Version 39, removed ML quest save/load
                 case 38:
@@ -4762,7 +4900,20 @@ namespace Server.Mobiles
 
             base.Serialize(writer);
 
-            writer.Write(40); // version
+            writer.Write(41); // version
+//Start PvP			
+			writer.Write( m_TotalPointsLost );
+			writer.Write( m_TotalPointsSpent );
+			writer.Write( ResKillTime );
+			writer.Write( m_LastPwned );
+			writer.Write( m_TotalResKills );
+			writer.Write( m_TotalResKilled );
+			writer.Write( m_LastPwner );
+			writer.Write( m_TotalPoints );
+			writer.Write( m_TotalWins );
+			writer.Write( m_TotalLoses );
+			writer.Write( m_PvpRank );
+//End PvP
 
             writer.Write(NextGemOfSalvationUse);
 
@@ -4923,7 +5074,7 @@ namespace Server.Mobiles
             writer.Write(m_AvailableResurrects);
 
             writer.Write((int)m_Flags);
-
+			
             writer.Write(m_LongTermElapse);
             writer.Write(m_ShortTermElapse);
             writer.Write(GameTime);
@@ -5054,7 +5205,7 @@ namespace Server.Mobiles
                 PropertyList = list;
             }
         }
-
+		
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
@@ -5416,7 +5567,7 @@ namespace Server.Mobiles
             if (PropertyTitle && Title != null && Title.Length > 0)
             {
                 suffix = Title;
-            }
+            }		
 
             BaseGuild guild = Guild;
             bool vvv = ViceVsVirtueSystem.IsVvV(this) && (ViceVsVirtueSystem.EnhancedRules || Map == ViceVsVirtueSystem.Facet);
@@ -5489,7 +5640,26 @@ namespace Server.Mobiles
                     list.Add("{0}, {1}", Utility.FixHtml(title), Utility.FixHtml(guild.Name));
                 }
             }
-        }
+//Start PvP			
+			if ( PvpPointSystem.EnablePointSystem == true && PvpPointSystem.EnableRankSystem == true )
+			{
+				if ( m_PvpRank != null )
+				{
+					if ( AccessLevel == AccessLevel.Player )
+						list.Add( 1060660, "Pvp Rank\t{0}", m_PvpRank );
+					else if ( PvpPointSystem.EnableStaffRank == true )
+						list.Add( 1060660, "Pvp Rank\t{0}", m_PvpRank );
+				}
+				else
+				{
+					if ( AccessLevel == AccessLevel.Player )
+						list.Add( 1060660, "Pvp Rank\tNewbie" );
+					else if ( PvpPointSystem.EnableStaffRank == true )
+						list.Add( 1060660, "Pvp Rank\tNewbie" );
+				}
+			}
+//End PvP
+		}
 
         public override void OnAfterNameChange(string oldName, string newName)
         {

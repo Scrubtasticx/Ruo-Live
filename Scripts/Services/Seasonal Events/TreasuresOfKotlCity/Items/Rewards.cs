@@ -351,7 +351,8 @@ namespace Server.Items
     {
         public override int LabelNumber => 1155682;  // Talons of Escaping
 
-        public TalonsOfEscaping()
+        [Constructable]
+		public TalonsOfEscaping()
         {
             Attributes.BonusDex = 4;
             Attributes.RegenStam = 1;
