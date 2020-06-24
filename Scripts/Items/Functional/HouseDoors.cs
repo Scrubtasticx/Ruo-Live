@@ -96,7 +96,7 @@ namespace Server.Items
         }
     }
 
-    public abstract class BaseHouseDoor : BaseDoor, ISecurable
+    public abstract class BaseHouseDoor : BaseDoor//, ISecurable
     {
         private DoorFacing m_Facing;
         private SecureLevel m_Level;
