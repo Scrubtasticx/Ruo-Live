@@ -108,7 +108,7 @@ namespace Server.Items
         {
             if (target is Mobile)
                 from.SendLocalizedMessage(500507); // You can only bless an item!
-            else if (target is BaseArmor || target is BaseClothing || target is BaseWeapon || target is BaseJewel)
+            else if (target is /*BaseArmor || target is*/ BaseClothing/* || target is BaseWeapon */|| target is BaseJewel)
             {
                 Item item = (Item)target;
 
@@ -125,21 +125,21 @@ namespace Server.Items
                     // Now we also know the deed is still in the players backpack,
                     // as is the item the player wants to bless. Let's go and
                     // bless it.
-                    if (item is BaseArmor)
-                    {
-                        BaseArmor mitem = (BaseArmor)item;
-                        mitem.BlessedBy = from;
-                    }
-                    else if (item is BaseClothing)
+//                    if (item is BaseArmor)
+//                    {
+//                       BaseArmor mitem = (BaseArmor)item;
+//                        mitem.BlessedBy = from;
+//                    }
+/*                   else */if (item is BaseClothing)
                     {
                         BaseClothing mitem = (BaseClothing)item;
                         mitem.BlessedBy = from;
                     }
-                    else if (item is BaseWeapon)
-                    {
-                        BaseWeapon mitem = (BaseWeapon)item;
-                        mitem.BlessedBy = from;
-                    }
+//                    else if (item is BaseWeapon)
+//                   {
+//                        BaseWeapon mitem = (BaseWeapon)item;
+//                        mitem.BlessedBy = from;
+//                    }
                     else if (item is BaseJewel)
                     {
                         BaseJewel mitem = (BaseJewel)item;
