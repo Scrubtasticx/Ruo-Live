@@ -1,3 +1,32 @@
+FIND: using System.Linq;
+
+ADD BELOW:
+using Server.Poker;
+
+FIND: private List<Mobile> m_RecentlyReported;
+
+ADD BELOW:
+        private PokerGame m_PokerGame;
+        public PokerGame PokerGame
+        {
+            get { return m_PokerGame; }
+            set { m_PokerGame = value; }
+        }
+
+FIND: protected override bool OnMove(Direction d)
+        {
+		
+ADD BELOW:			
+            if (m_PokerGame != null)
+            {
+                if (!HasGump(typeof(PokerLeaveGump)))
+                {
+                    SendGump(new PokerLeaveGump(this, m_PokerGame));
+                    return false;
+                }
+            }
+
+
 To be clear for everyone, this system does work absolutely awesome!!
 
 Follow these steps to get it working:
