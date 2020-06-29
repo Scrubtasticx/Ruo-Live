@@ -39,6 +39,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Server.Poker; //RedemptionUO Original value remove line
 using RankDefinition = Server.Guilds.RankDefinition;
 #endregion
 
@@ -349,6 +350,14 @@ namespace Server.Mobiles
         private List<Mobile> m_AutoStabled;
         private List<Mobile> m_AllFollowers;
         private List<Mobile> m_RecentlyReported;
+        //RedemptionUO Start
+        private PokerGame m_PokerGame;
+        public PokerGame PokerGame
+        {
+            get { return m_PokerGame; }
+            set { m_PokerGame = value; }
+        }
+        //RedemptionUO End
 
         public bool UseSummoningRite { get; set; }
 
@@ -5275,6 +5284,16 @@ namespace Server.Mobiles
 
         protected override bool OnMove(Direction d)
         {
+            //RedemptionUO Start			
+            if (m_PokerGame != null)
+            {
+                if (!HasGump(typeof(PokerLeaveGump)))
+                {
+                    SendGump(new PokerLeaveGump(this, m_PokerGame));
+                    return false;
+                }
+            }
+            //RedemptionUO End
             if (Party != null && NetState != null)
             {
                 Waypoints.UpdateToParty(this);

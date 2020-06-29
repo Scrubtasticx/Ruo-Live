@@ -160,7 +160,7 @@ namespace Server.Commands
 			AddButton(318, 298, 4014, 4015, 4, GumpButtonType.Page, 1);
 			AddLabel(358, 299, 1160, @"Last Page");
 
-			AddHtml(35, 135, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Battles Fought:", false, false);
+			AddHtml(35, 137, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Battles Fought:", false, false);
 			AddImageTiled(28, 129, 409, 9, 5121);
 			AddHtml(35, 155, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Points Lost:", false, false);
 			AddHtml(35, 175, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Points Spent:", false, false);

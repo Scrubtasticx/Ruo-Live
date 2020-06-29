@@ -10,7 +10,8 @@ namespace Server.Mobiles
         public static Map[] Maps = new Map[]                   // Maps that paragons will spawn on
         {
             Map.Ilshenar,
-			Map.Felucca
+			Map.Felucca,
+			Map.Tokuno
         };
         public static Type[] Artifacts = new Type[]
         {
