@@ -26,7 +26,6 @@ namespace Server.Gumps
 			Resizable=false;
 			AddPage(0);
 			AddBackground(16, 12, 549, 303, 9300);
-//			AddBackground(16, 12, 549, 303, 5120);
 			AddImageTiled(26, 21, 531, 26, 5154);
 			AddAlphaRegion(26, 21, 531, 26);
 			AddButton(28, 50, 4005, 4006, 1, GumpButtonType.Reply, 0);

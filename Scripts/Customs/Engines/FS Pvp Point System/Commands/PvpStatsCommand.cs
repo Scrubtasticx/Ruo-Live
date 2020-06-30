@@ -12,7 +12,7 @@ namespace Server.Commands
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "PvpStats", AccessLevel.Player, new CommandEventHandler( PvpStats_OnCommand ) );
+			CommandSystem.Register( "PvpStats", AccessLevel.Owner, new CommandEventHandler( PvpStats_OnCommand ) );
 		}
 
 		[Usage( "PvpStats" )]
@@ -71,18 +71,18 @@ namespace Server.Commands
 			AddBackground(23, 23, 417, 312, 5120);
 			AddLabel(35, 25, 1160,  @"Player Vs. Player Statistics");
 			AddImageTiled(28, 51, 409, 9, 5121);
-			AddHtml(35, 65, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Player Name:", false, false);
-			AddHtml(35, 85, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Short Term Murder Counts:", false, false);
-			AddHtml(35, 105, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Long Term Murder Counts:", false, false);
-			AddHtml(35, 137, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Points:", false, false);
+			AddHtml(35, 65, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Player Name:", false, false);
+			AddHtml(35, 85, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Short Term Murder Counts:", false, false);
+			AddHtml(35, 105, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Long Term Murder Counts:", false, false);
+			AddHtml(35, 137, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Total Points:", false, false);
 			AddImageTiled(28, 129, 409, 9, 5121);
-			AddHtml(35, 155, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Battles Won:", false, false);
-			AddHtml(35, 175, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Battles Lost:", false, false);
-			AddHtml(35, 195, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Res Kills:", false, false);
-			AddHtml(35, 215, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Times Res Killed:", false, false);
+			AddHtml(35, 155, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Total Battles Won:", false, false);
+			AddHtml(35, 175, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Total Battles Lost:", false, false);
+			AddHtml(35, 195, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Total Res Kills:", false, false);
+			AddHtml(35, 215, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Total Times Res Killed:", false, false);
 			AddImageTiled(27, 238, 409, 9, 5121);
-			AddHtml(35, 245, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Last Person Defeated:", false, false);
-			AddHtml(35, 265, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Last Defeated By:", false, false);
+			AddHtml(35, 245, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Last Person Defeated:", false, false);
+			AddHtml(35, 265, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Last Defeated By:", false, false);
 			AddImageTiled(27, 288, 409, 9, 5121);
 			AddButton(37, 298, 4017, 4018, 1, GumpButtonType.Reply, 0);
 			AddLabel(75, 299, 1160, @"Close");
@@ -149,9 +149,9 @@ namespace Server.Commands
 			AddBackground(23, 23, 417, 312, 5120);
 			AddLabel(35, 25, 1160, @"Player Vs. Player Statistics");
 			AddImageTiled(28, 51, 409, 9, 5121);
-			AddHtml(35, 65, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Player Rank:", false, false);
-			AddHtml(35, 85, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Pure Wins:", false, false);
-			AddHtml(35, 105, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Pure Wins Till Next Rank:", false, false);
+			AddHtml(35, 65, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Player Rank:", false, false);
+			AddHtml(35, 85, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Pure Wins:", false, false);
+			AddHtml(35, 105, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Pure Wins Till Next Rank:", false, false);
 			AddImageTiled(27, 288, 409, 9, 5121);
 			AddButton(37, 298, 4017, 4018, 3, GumpButtonType.Reply, 0);
 			AddLabel(75, 299, 1160, @"Close");
@@ -160,10 +160,10 @@ namespace Server.Commands
 			AddButton(318, 298, 4014, 4015, 4, GumpButtonType.Page, 1);
 			AddLabel(358, 299, 1160, @"Last Page");
 
-			AddHtml(35, 137, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Battles Fought:", false, false);
+			AddHtml(35, 137, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Total Battles Fought:", false, false);
 			AddImageTiled(28, 129, 409, 9, 5121);
-			AddHtml(35, 155, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Points Lost:", false, false);
-			AddHtml(35, 175, 1149, 18,  "<BASEFONT COLOR=#FFFFFF>Total Points Spent:", false, false);
+			AddHtml(35, 155, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Total Points Lost:", false, false);
+			AddHtml(35, 175, 1149, 18,  @"<BASEFONT COLOR=#FFFFFF>Total Points Spent:", false, false);
 			if ( o is PlayerMobile )
 			{
 				PlayerMobile pm2 = (PlayerMobile)o;
