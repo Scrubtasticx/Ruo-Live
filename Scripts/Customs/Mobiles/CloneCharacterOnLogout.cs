@@ -55,11 +55,9 @@ namespace Felladrin.Automations
                 var etherealMount = m.Mount as EtherealMount;
 
                 if (baseMount != null)
-                    new MountClone(baseMount).Rider = characterClone;
-/* Redemption Start				
+                    new MountClone(baseMount).Rider = characterClone;			
                 else if (etherealMount != null)
                     new EtherealMountClone(etherealMount).Rider = characterClone;
-Redemption End*/
             }
         }
 
@@ -204,10 +202,10 @@ Redemption End*/
                 reader.ReadInt();
             }
         }
-/*Redemption Start
+
         public class EtherealMountClone : EtherealMount
         {
-            public EtherealMountClone(EtherealMount original) : base(original.RegularID, original.MountedID)
+            public EtherealMountClone(EtherealMount original) : base(original.MountedID)
             {
                 foreach (var property in (typeof(EtherealMount)).GetProperties())
                     if (property.CanRead && property.CanWrite && property.Name != "Rider")
@@ -228,6 +226,5 @@ Redemption End*/
                 reader.ReadInt();
             }
         }
-Redemption End*/
     }
 }
