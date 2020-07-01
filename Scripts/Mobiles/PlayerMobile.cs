@@ -2387,7 +2387,7 @@ namespace Server.Mobiles
 
                 list.Add(new OpenBackpackEntry(this));
 
-                if (Alive && InsuranceEnabled)
+                if (Siege.SiegeShard && Alive && InsuranceEnabled)
                 {
                     list.Add(new CallbackEntry(1114299, OpenItemInsuranceMenu));
                     list.Add(new CallbackEntry(6201, ToggleItemInsurance));
