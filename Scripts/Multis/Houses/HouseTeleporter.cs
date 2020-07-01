@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Server.Items
 {
-    public class HouseTeleporter : Item, ISecurable
+    public class HouseTeleporter : Item//, ISecurable
     {
         private Item m_Target;
         private SecureLevel m_Level;
@@ -63,7 +63,7 @@ namespace Server.Items
         public virtual bool CheckAccess(Mobile m)
         {
             BaseHouse house = BaseHouse.FindHouseAt(this);
-
+/*
             if (house != null && house.IsCombatRestricted(m))
             {
                 m.SendLocalizedMessage(1071514); // You cannot use this item during the heat of battle.
@@ -81,6 +81,7 @@ namespace Server.Items
                 m.SendLocalizedMessage(1115577); // You cannot teleport from here to the destination because you do not have the correct house permissions.
                 return false;
             }
+*/
 
             return true;
         }

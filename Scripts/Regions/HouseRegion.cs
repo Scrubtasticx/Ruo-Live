@@ -126,10 +126,11 @@ namespace Server.Regions
             else if (m is BaseCreature && ((BaseCreature)m).IsHouseSummonable && !(BaseCreature.Summoning || House.IsInside(oldLocation, 16)))
             {
             }
-            else if ((House.Public) && House.IsBanned(m) && House.IsInside(m))
+            else if ((House !=null) && House.IsBanned(m) && House.IsInside(m))
             {
                 m.Location = House.BanLocation;
             }
+/*RedemptionUO Start
             else if (!House.Public && !House.HasAccess(m) && House.IsInside(m))
             {
                 m.Location = House.BanLocation;
@@ -139,6 +140,7 @@ namespace Server.Regions
                 m.Location = House.BanLocation;
                 m.SendLocalizedMessage(1061637); // You are not allowed to access 
             }
+RedemptionUO End*/
             else if (House is HouseFoundation)
             {
                 HouseFoundation foundation = (HouseFoundation)House;
@@ -169,23 +171,28 @@ namespace Server.Regions
             if (from is BaseCreature && ((BaseCreature)from).NoHouseRestrictions)
             {
             }
+/*RedemptionUO Start
             else if (from is BaseCreature && !((BaseCreature)from).Controlled) // Untamed creatures cannot enter public houses
             {
                 return false;
             }
+RedemptionUO End*/
             else if (from is BaseCreature && ((BaseCreature)from).IsHouseSummonable && !(BaseCreature.Summoning || House.IsInside(oldLocation, 16)))
             {
+/*RedemptionUO Start
                 return false;
             }
-            else if (from is BaseCreature && !((BaseCreature)from).Controlled && !House.Public)
+            else if (from is BaseCreature && !((BaseCreature)from).Controlled && House.IsAosRules && !House.Public)
             {
                 return false;
-            }
-            else if ((House.Public) && House.IsBanned(from) && House.IsInside(newLocation, 16))
+RedemptionUO End*/
+			}
+            else if ((House !=null) && House.IsBanned(from) && House.IsInside(newLocation, 16))
             {
                 from.Location = House.BanLocation;
                 return false;
             }
+/*RedemptionUO Start
             else if (!House.Public && !House.HasAccess(from) && House.IsInside(newLocation, 16))
             {
                 return false;
@@ -195,6 +202,7 @@ namespace Server.Regions
                 from.SendLocalizedMessage(1061637); // You are not allowed to access 
                 return false;
             }
+RedemptionUO End*/
             else if (House is HouseFoundation)
             {
                 HouseFoundation foundation = (HouseFoundation)House;
@@ -280,7 +288,7 @@ namespace Server.Regions
 
             if (!from.Alive)
                 return;
-
+/*RedemptionUO Start
             if (Insensitive.Equals(e.Speech, "I wish to resize my house"))
             {
                 if (from.Map != sign.Map || !from.InRange(sign, 0))
@@ -305,7 +313,7 @@ namespace Server.Regions
 
             if (!House.IsInside(from) || !House.IsActive)
                 return;
-
+RedemptionUO End*/
             else if (e.HasKeyword(0x33)) // remove thyself
             {
                 from.SendLocalizedMessage(501326); // Target the individual to eject from this house.
@@ -313,10 +321,16 @@ namespace Server.Regions
             }
             else if (e.HasKeyword(0x34)) // I ban thee
             {
-                if (!House.Public)
+				if ( !isFriend )
+				{
+					from.SendLocalizedMessage( 502094 ); // You must be in your house to do this.
+				}
+/*RedemptionUO Start
+                if (!House.Public && House.IsAosRules)
                 {
                     from.SendLocalizedMessage(1062521); // You cannot ban someone from a private house.  Revoke their access instead.
                 }
+RedemptionUO End */
                 else
                 {
                     from.SendLocalizedMessage(501325); // Target the individual to ban from this house.
