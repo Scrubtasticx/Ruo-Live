@@ -26,10 +26,8 @@ namespace Server.Gumps
         ListFriend,
         RemoveBan,
         ListBan,
-/*RedemptionUO Start
         RemoveAccess,
         ListAccess,
-RedemptionUO End*/
         ChangePost,
         Vendors
     }
@@ -238,18 +236,16 @@ RedemptionUO End*/
             if (!isFriend)
                 return;
 
-            if (house !=null)
+            if (house.Public)
             {
                 AddButtonLabeled(10, 390, GetButtonID(0, 0), 1060674); // Banish
                 AddButtonLabeled(10, 410, GetButtonID(0, 1), 1011261); // Lift a Ban
             }
-/*RedemptionUO Start
             else
             {
                 AddButtonLabeled(10, 390, GetButtonID(0, 2), 1060676); // Grant Access
                 AddButtonLabeled(10, 410, GetButtonID(0, 3), 1060677); // Revoke Access
             }
-RedemptionUO End*/
 
             AddPageButton(10, 10, GetButtonID(1, 0), 1060668, HouseGumpPage.Information);
             AddPageButton(10, 30, GetButtonID(1, 1), 1060669, HouseGumpPage.Security);
@@ -326,8 +322,8 @@ RedemptionUO End*/
                         }
                         else
                         {
-                            AddButtonLabeled(10, 310, GetButtonID(3, 8), 1011260); // View Ban List
-                            AddButtonLabeled(10, 330, GetButtonID(3, 9), 1060698); // Clear Ban List
+                            AddButtonLabeled(10, 310, GetButtonID(3, 10), 1060699); // View Access List
+                            AddButtonLabeled(10, 330, GetButtonID(3, 11), 1060700); // Clear Access List
 
                             AddHtmlLocalized(245, 130, 240, 20, 1060695, SelectedColor, false, false); // Change to Private
 
@@ -365,43 +361,23 @@ RedemptionUO End*/
                         AddHtmlLocalized(10, 210, 300, 20, 1060686, LabelColor, false, false); // Used by Lockdowns
                         AddLabel(310, 210, LabelHue, fromLockdowns.ToString());
 
-                        if (BaseHouse.NewVendorSystem)
-                        {
-                            AddHtmlLocalized(10, 230, 300, 20, 1060688, LabelColor, false, false); // Used by Secure Containers
-                            AddLabel(310, 230, LabelHue, fromSecures.ToString());
+                        AddHtmlLocalized(10, 230, 300, 20, 1060688, LabelColor, false, false); // Used by Secure Containers
+                        AddLabel(310, 230, LabelHue, fromSecures.ToString());
 
-                            AddHtmlLocalized(10, 250, 300, 20, 1060689, LabelColor, false, false); // Available Storage
-                            AddLabel(310, 250, LabelHue, Math.Max(maxSecures - curSecures, 0).ToString());
+                        AddHtmlLocalized(10, 250, 300, 20, 1060689, LabelColor, false, false); // Available Storage
+                        AddLabel(310, 250, LabelHue, Math.Max(maxSecures - curSecures, 0).ToString());
 
-                            AddHtmlLocalized(10, 290, 300, 20, 1060690, LabelColor, false, false); // Maximum Lockdowns
-                            AddLabel(310, 290, LabelHue, maxLockdowns.ToString());
+                        AddHtmlLocalized(10, 290, 300, 20, 1060690, LabelColor, false, false); // Maximum Lockdowns
+                        AddLabel(310, 290, LabelHue, maxLockdowns.ToString());
 
-                            AddHtmlLocalized(10, 310, 300, 20, 1060691, LabelColor, false, false); // Available Lockdowns
-                            AddLabel(310, 310, LabelHue, Math.Max(maxLockdowns - curLockdowns, 0).ToString());
+                        AddHtmlLocalized(10, 310, 300, 20, 1060691, LabelColor, false, false); // Available Lockdowns
+                        AddLabel(310, 310, LabelHue, Math.Max(maxLockdowns - curLockdowns, 0).ToString());
 
-                            int maxVendors = house.GetNewVendorSystemMaxVendors();
-                            int vendors = house.PlayerVendors.Count + house.VendorRentalContracts.Count;
+                        int maxVendors = house.GetVendorSystemMaxVendors();
+                        int vendors = house.PlayerVendors.Count + house.VendorRentalContracts.Count;
 
-                            AddHtmlLocalized(10, 350, 300, 20, 1062391, LabelColor, false, false); // Vendor Count
-                            AddLabel(310, 350, LabelHue, vendors.ToString() + " / " + maxVendors.ToString());
-                        }
-                        else
-                        {
-                            AddHtmlLocalized(10, 230, 300, 20, 1060687, LabelColor, false, false); // Used by Vendors
-                            AddLabel(310, 230, LabelHue, fromVendors.ToString());
-
-                            AddHtmlLocalized(10, 250, 300, 20, 1060688, LabelColor, false, false); // Used by Secure Containers
-                            AddLabel(310, 250, LabelHue, fromSecures.ToString());
-
-                            AddHtmlLocalized(10, 270, 300, 20, 1060689, LabelColor, false, false); // Available Storage
-                            AddLabel(310, 270, LabelHue, Math.Max(maxSecures - curSecures, 0).ToString());
-
-                            AddHtmlLocalized(10, 330, 300, 20, 1060690, LabelColor, false, false); // Maximum Lockdowns
-                            AddLabel(310, 330, LabelHue, maxLockdowns.ToString());
-
-                            AddHtmlLocalized(10, 350, 300, 20, 1060691, LabelColor, false, false); // Available Lockdowns
-                            AddLabel(310, 350, LabelHue, Math.Max(maxLockdowns - curLockdowns, 0).ToString());
-                        }
+                        AddHtmlLocalized(10, 350, 300, 20, 1062391, LabelColor, false, false); // Vendor Count
+                        AddLabel(310, 350, LabelHue, vendors.ToString() + " / " + maxVendors.ToString());
 
                         break;
                     }
@@ -542,7 +518,6 @@ RedemptionUO End*/
                         AddList(house.Bans, -1, true, true, from);
                         break;
                     }
-/*RedemptionUO Start
                 case HouseGumpPage.RemoveAccess:
                     {
                         AddHtmlLocalized(10, 120, 400, 20, 1060732, LabelColor, false, false); // <CENTER>ACCESS LIST</CENTER>
@@ -555,7 +530,6 @@ RedemptionUO End*/
                         AddList(house.Access, -1, false, true, from);
                         break;
                     }
-RedemptionUO End*/
                 case HouseGumpPage.ChangePost:
                     {
                         int index = 0;
@@ -823,11 +797,11 @@ RedemptionUO End*/
 
                 if ((house is BaseContestHouse && ((BaseContestHouse)house).HouseType == ContestHouseType.Keep) || house is Keep)
                 {
-                    entries = HousePlacementEntry.HousesEJ.Where(e => e.MultiID != house.ItemID && (e.MultiID == 0x007C || e.MultiID == 0x147E || e.MultiID >= 0x1484)).ToArray();
+                    entries = HousePlacementEntry.PreBuiltHouses.Where(e => e.MultiID != house.ItemID && (e.MultiID == 0x007C || e.MultiID == 0x147E || e.MultiID >= 0x1484)).ToArray();
                 }
                 else if ((house is BaseContestHouse && ((BaseContestHouse)house).HouseType == ContestHouseType.Castle) || house is Castle)
                 {
-                    entries = HousePlacementEntry.HousesEJ.Where(e => e.MultiID != house.ItemID && (e.MultiID == 0x007E || (e.MultiID >= 0x147F && e.MultiID <= 0x1483))).ToArray();
+                    entries = HousePlacementEntry.PreBuiltHouses.Where(e => e.MultiID != house.ItemID && (e.MultiID == 0x007E || (e.MultiID >= 0x147F && e.MultiID <= 0x1483))).ToArray();
                 }
 
                 if (entries != null)
@@ -909,7 +883,7 @@ RedemptionUO End*/
                         {
                             case 0: // Banish
                                 {
-                                    if (m_House !=null)
+                                    if (m_House.Public)
                                     {
                                         from.SendLocalizedMessage(501325); // Target the individual to ban from this house.
                                         from.Target = new HouseBanTarget(true, m_House);
@@ -919,12 +893,11 @@ RedemptionUO End*/
                                 }
                             case 1: // Lift Ban
                                 {
-                                    if (m_House !=null)
+                                    if (m_House.Public)
                                         from.SendGump(new HouseGump(HouseGumpPage.RemoveBan, from, m_House));
 
                                     break;
                                 }
-/*RedemptionUO Start
                             case 2: // Grant Access
                                 {
                                     if (!m_House.Public)
@@ -942,7 +915,6 @@ RedemptionUO End*/
 
                                     break;
                                 }
-RedemptionUO End*/
                         }
 
                         break;
@@ -1052,7 +1024,6 @@ RedemptionUO End*/
 
                                     break;
                                 }
-/*RedemptionUO Start
                             case 10: // View Access List
                                 {
                                     from.SendGump(new HouseGump(HouseGumpPage.ListAccess, from, m_House));
@@ -1065,7 +1036,6 @@ RedemptionUO End*/
 
                                     break;
                                 }
-RedemptionUO End*/
                             case 12: // Make Private
                                 {
                                     if (isOwner)
@@ -1116,15 +1086,8 @@ RedemptionUO End*/
                                     {
                                         m_House.Public = true;
 
-                                        if (BaseHouse.NewVendorSystem)
-                                        {
-                                            // This house is now public. The owner may now place vendors and vendor rental contracts.
-                                            from.SendGump(new NoticeGump(1060637, 30720, 501886, 32512, 320, 180, PublicPrivateNotice_Callback, m_House));
-                                        }
-                                        else
-                                        {
-                                            from.SendGump(new NoticeGump(1060637, 30720, "This house is now public. Friends of the house may now have vendors working out of this building.", 0xF8C000, 320, 180, PublicPrivateNotice_Callback, m_House));
-                                        }
+                                        // This house is now public. The owner may now place vendors and vendor rental contracts.
+                                        from.SendGump(new NoticeGump(1060637, 30720, 501886, 32512, 320, 180, PublicPrivateNotice_Callback, m_House));
 
                                         Region r = m_House.Region;
                                         List<Mobile> list = r.GetMobiles();
@@ -1331,7 +1294,7 @@ RedemptionUO End*/
                                 {
                                     if (isOwner)
                                     {
-                                        if (BaseHouse.NewVendorSystem && m_House.HasPersonalVendors)
+                                        if (m_House.HasPersonalVendors)
                                         {
                                             from.SendLocalizedMessage(1062467); // You cannot trade this house while you still have personal vendors inside.
                                         }
@@ -1519,7 +1482,6 @@ RedemptionUO End*/
 
                         break;
                     }
-/*RedemptionUO Start					
                 case 13:
                     {
                         if (m_List != null && index >= 0 && index < m_List.Count)
@@ -1534,7 +1496,6 @@ RedemptionUO End*/
 
                         break;
                     }
-RedemptionUO End*/
                 case 14:
                     {
                         if (isOwner && isCustomizable && index >= 0 && index < m_PostNumbers.Length)

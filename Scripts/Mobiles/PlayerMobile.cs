@@ -39,7 +39,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Server.Poker; //RedemptionUO Original value remove line
+using Server.Poker;
 using RankDefinition = Server.Guilds.RankDefinition;
 #endregion
 
@@ -224,7 +224,7 @@ namespace Server.Mobiles
         private ExtendedPlayerFlag m_ExtendedFlags;
         private int m_Profession;
 		
-//Start Pvp Point System
+		//Start Pvp Point System
 
 		private int m_TotalPoints;
 		private int m_TotalWins;
@@ -325,8 +325,7 @@ namespace Server.Mobiles
 		{
 			get{ return m_TotalPointsSpent; }
 			set{ m_TotalPointsSpent = value; }
-		}
-		
+		}	
 //End Pvp Point System
 
         private int m_NonAutoreinsuredItems;
@@ -350,14 +349,13 @@ namespace Server.Mobiles
         private List<Mobile> m_AutoStabled;
         private List<Mobile> m_AllFollowers;
         private List<Mobile> m_RecentlyReported;
-        //RedemptionUO Start
-        private PokerGame m_PokerGame;
+		
+		private PokerGame m_PokerGame;
         public PokerGame PokerGame
         {
             get { return m_PokerGame; }
             set { m_PokerGame = value; }
         }
-        //RedemptionUO End
 
         public bool UseSummoningRite { get; set; }
 
@@ -2354,11 +2352,17 @@ namespace Server.Mobiles
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
         {
-			
             list.Add(new PaperdollEntry(this));
-		 
+
             if (from == this)
             {
+                #region TOL Shadowguard
+                if (ShadowguardController.GetInstance(Location, Map) != null)
+                {
+                    list.Add(new ExitEntry(this));
+                }
+                #endregion
+
                 if (Alive)
                 {
                     list.Add(new SearchVendors(this));
@@ -2383,12 +2387,11 @@ namespace Server.Mobiles
 
                 list.Add(new OpenBackpackEntry(this));
 
-                if (Siege.SiegeShard && Alive && InsuranceEnabled)
+                if (Alive && InsuranceEnabled)
                 {
                     list.Add(new CallbackEntry(1114299, OpenItemInsuranceMenu));
                     list.Add(new CallbackEntry(6201, ToggleItemInsurance));
                 }
-
                 else if (Siege.SiegeShard)
                 {
                     list.Add(new CallbackEntry(3006168, SiegeBlessItem));
@@ -2411,10 +2414,7 @@ namespace Server.Mobiles
                         list.Add(new CallbackEntry(6204, GetVendor));
                     }
 
-                    if (house.IsAosRules)
-                    {
-                        list.Add(new CallbackEntry(6207, LeaveHouse));
-                    }
+                    list.Add(new CallbackEntry(6207, LeaveHouse));
                 }
 
                 list.Add(new CallbackEntry(RefuseTrades ? 1154112 : 1154113, ToggleTrades)); // Allow Trades / Refuse Trades				
@@ -2438,13 +2438,6 @@ namespace Server.Mobiles
 
                         list.Add(new VoidPoolInfo(this, controller));
                     }
-                }
-                #endregion
-
-                #region TOL Shadowguard
-                if (ShadowguardController.GetInstance(Location, Map) != null)
-                {
-                    list.Add(new ExitEntry(this));
                 }
                 #endregion
 
@@ -2487,14 +2480,9 @@ namespace Server.Mobiles
                     list.Add(new CallbackEntry(1077728, () => OpenTrade(from))); // Trade
                 }
 
-                BaseHouse curhouse = BaseHouse.FindHouseAt(this);
-
-                if (curhouse != null)
+                if (Alive && EjectPlayerEntry.CheckAccessible(from, this))
                 {
-                    if (Alive && curhouse.IsAosRules && curhouse.IsFriend(from))
-                    {
-                        list.Add(new EjectPlayerEntry(from, this));
-                    }
+                    list.Add(new EjectPlayerEntry(from, this));
                 }
             }
         }
@@ -3702,7 +3690,7 @@ namespace Server.Mobiles
             if (m_InsuranceAward is PlayerMobile)
             {
                 ((PlayerMobile)m_InsuranceAward).m_InsuranceBonus = 0;
-
+				
 //Start PvP				
 				Mobile kill = FindMostRecentDamager( false );
 			if ( kill is PlayerMobile )
@@ -3714,9 +3702,8 @@ namespace Server.Mobiles
 
 				if ( PvpPointSystem.EnableRankSystem == true )
 					PvpPointSystem.CheckTitle( this, killer );
-			}
-			
-//End PvP			
+			}		
+//End PvP
             }
 
             if (m_ReceivedHonorContext != null)
@@ -4442,7 +4429,7 @@ namespace Server.Mobiles
 					m_PvpRank = reader.ReadString();
 					goto case 40;
 				}
-//End PvP				
+//End PvP
                 case 40: // Version 40, moved gauntlet points, virtua artys and TOT turn ins to PointsSystem
                 case 39: // Version 39, removed ML quest save/load
                 case 38:
@@ -4909,7 +4896,7 @@ namespace Server.Mobiles
 
             base.Serialize(writer);
 
-			writer.Write(41); // version
+            writer.Write(41); // version
 //Start PvP			
 			writer.Write( m_TotalPointsLost );
 			writer.Write( m_TotalPointsSpent );
@@ -4923,7 +4910,6 @@ namespace Server.Mobiles
 			writer.Write( m_TotalLoses );
 			writer.Write( m_PvpRank );
 //End PvP
-
             writer.Write(NextGemOfSalvationUse);
 
             writer.Write((int)m_ExtendedFlags);
@@ -5083,7 +5069,7 @@ namespace Server.Mobiles
             writer.Write(m_AvailableResurrects);
 
             writer.Write((int)m_Flags);
-			
+
             writer.Write(m_LongTermElapse);
             writer.Write(m_ShortTermElapse);
             writer.Write(GameTime);
@@ -5214,7 +5200,7 @@ namespace Server.Mobiles
                 PropertyList = list;
             }
         }
-		
+
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
@@ -5222,6 +5208,9 @@ namespace Server.Mobiles
 			if (AccessLevel > AccessLevel.Player)
 				list.Add(1060847, "{0}\t{1}", "Shard", Enum.GetName(typeof(AccessLevel), AccessLevel));
 //Redemption End
+
+            JollyRogerData.DisplayTitle(this, list);
+
             if (m_SubtitleSkillTitle != null)
                 list.Add(1042971, m_SubtitleSkillTitle);
 
@@ -5284,8 +5273,7 @@ namespace Server.Mobiles
 
         protected override bool OnMove(Direction d)
         {
-            //RedemptionUO Start			
-            if (m_PokerGame != null)
+			if (m_PokerGame != null)
             {
                 if (!HasGump(typeof(PokerLeaveGump)))
                 {
@@ -5293,7 +5281,7 @@ namespace Server.Mobiles
                     return false;
                 }
             }
-            //RedemptionUO End
+			
             if (Party != null && NetState != null)
             {
                 Waypoints.UpdateToParty(this);
@@ -5586,7 +5574,7 @@ namespace Server.Mobiles
             if (PropertyTitle && Title != null && Title.Length > 0)
             {
                 suffix = Title;
-            }		
+            }
 
             BaseGuild guild = Guild;
             bool vvv = ViceVsVirtueSystem.IsVvV(this) && (ViceVsVirtueSystem.EnhancedRules || Map == ViceVsVirtueSystem.Facet);
@@ -5678,7 +5666,7 @@ namespace Server.Mobiles
 				}
 			}
 //End PvP
-		}
+        }
 
         public override void OnAfterNameChange(string oldName, string newName)
         {
@@ -6664,7 +6652,7 @@ namespace Server.Mobiles
                         continue;
                     }
 
-                    if (!pet.CanAutoStable)
+                    if (!pet.CanAutoStable || Stabled.Count >= AnimalTrainer.GetMaxStabled(this))
                     {
                         continue;
                     }

@@ -140,30 +140,29 @@ namespace Server.Spells.Seventh
             {
                 Caster.SendLocalizedMessage(1151733); // You cannot do that while carrying a Trade Order.
             }
-            else if ( CheckSequence() )
-                        {
-                                Caster.SendLocalizedMessage( 501024 ); // You open a magical gate to another location
- 
-                                Effects.PlaySound( Caster.Location, Caster.Map, 0x20E );
- 
-                                InternalItem firstGate = new InternalItem( loc, map );
-                                firstGate.MoveToWorld( Caster.Location, Caster.Map );
- 
-                                Effects.PlaySound( loc, map, 0x20E );
- 
-                                InternalItem secondGate = new InternalItem( Caster.Location, Caster.Map );
- 
-                                if ( SpellHelper.CheckMulti( Caster.Location, Caster.Map ) )
-                                {
-                                        /*secondGate.Target = Point3D.Zero;
-                                        secondGate.TargetMap = null;*/
-                                        secondGate.MultiDestination = true;
-                                        secondGate.Hue = 0x3B2;
-                                        Caster.LocalOverheadMessage( MessageType.Emote, 0x3B2, false, "The strength imbued in this structure prevents the summoning of a return gate. If you go in, you will not be able to return." );
-                                }
- 
-                                secondGate.MoveToWorld( loc, map );
-                        }
+            else if (CheckSequence())
+            {
+                Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
+                {
+                    Caster.SendLocalizedMessage(501024); // You open a magical gate to another location
+
+                    Effects.PlaySound(Caster.Location, Caster.Map, 0x20E);
+
+                    InternalItem firstGate = new InternalItem(loc, map);
+                    firstGate.MoveToWorld(Caster.Location, Caster.Map);
+
+                    Effects.PlaySound(loc, map, 0x20E);
+
+                    InternalItem secondGate = new InternalItem(Caster.Location, Caster.Map);
+                    secondGate.MoveToWorld(loc, map);
+
+                    firstGate.LinkedGate = secondGate;
+                    secondGate.LinkedGate = firstGate;
+
+                    firstGate.BoatGate = BaseBoat.FindBoatAt(firstGate, firstGate.Map) != null;
+                    secondGate.BoatGate = BaseBoat.FindBoatAt(secondGate, secondGate.Map) != null;
+                });
+            }
 
             FinishSequence();
         }
@@ -189,9 +188,6 @@ namespace Server.Spells.Seventh
         [DispellableField]
         private class InternalItem : Moongate
         {
-			private bool _MultiDestination = false;
-			public bool MultiDestination { get { return _MultiDestination; } set { _MultiDestination = value; } }
-			
             [CommandProperty(AccessLevel.GameMaster)]
             public Moongate LinkedGate { get; set; }
 
@@ -268,14 +264,6 @@ namespace Server.Spells.Seventh
 
                 Delete();
             }
-			
-			public override void CheckGate( Mobile m, int range )
-                        {
-                                if ( _MultiDestination && m.AccessLevel == AccessLevel.Player )
-                                        return;
- 
-                                base.CheckGate( m, range );
-                        }
 
             private class InternalTimer : Timer
             {

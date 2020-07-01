@@ -793,7 +793,7 @@ namespace Server.Engines.BulkOrders
 
         private static Item CreateCBD(int type)
         {
-            return new PersonalBlessDeedToken();
+            return new ClothingBlessDeed();
         }
 
         private static Item CreateCraftsmanTalisman(int type)

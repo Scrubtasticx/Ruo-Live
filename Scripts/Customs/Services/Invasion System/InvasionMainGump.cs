@@ -46,7 +46,7 @@ namespace Server.Customs.Invasion_System
             int y;
 
 			AddBackground(60, 44, 672, 448, 9200);
-			AddLabel(300, 80, 53, @"Ravenwolfe's Invasion System");
+			AddLabel(300, 80, 53, @"Invasion System");
 
             AddLabel(387, 119, 0, @"Invasion Time (UTC):");
             AddImageTiled(512, 119, 170, 20, 0xBBC);

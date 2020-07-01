@@ -307,7 +307,7 @@ namespace Server.Items
             Register(20, new ItemPropertyInfo(AosAttribute.EnhancePotions, 1075624, 100, typeof(EnchantedEssence), typeof(Citrine), typeof(CrushedGlass), 5, 5, 25, 1111950,
                 new PropInfo(1, 0, 15), new PropInfo(2, 0, 15), new PropInfo(3, 0, 5), new PropInfo(5, 0, 5), new PropInfo(6, 25, 25, new int[] { 30, 35 })));
 
-            Register(21, new ItemPropertyInfo(AosAttribute.Luck, 1061153, 100, typeof(MagicalResidue), typeof(Citrine), typeof(ChagaMushroom), 10, 10, 100, 1111999,
+            Register(21, new ItemPropertyInfo(AosAttribute.Luck, 1061153, 100, typeof(MagicalResidue), typeof(Citrine), typeof(ChagaMushroom), 1, 1, 100, 1111999,
                 new PropInfo(1, 100, 100, new int[] { 110, 120, 130, 140, 150 }), new PropInfo(2, 120, 120, new int[] { 130, 140, 150, 160, 170 }), new PropInfo(3, 100, 100, new int[] { 110, 120, 130, 140, 150 }), new PropInfo(4, 100, 100, new int[] { 110, 120, 130, 140, 150 }), new PropInfo(5, 100, 100, new int[] { 110, 120, 130, 140, 150 }), new PropInfo(6, 100, 100, new int[] { 110, 120, 130, 140, 150 })));
 
             Register(22, new ItemPropertyInfo(AosAttribute.SpellChanneling, 1079766, 100, typeof(MagicalResidue), typeof(Diamond), typeof(SilverSnakeSkin), 0, 1, 1, 1112040,
@@ -401,10 +401,13 @@ namespace Server.Items
                 new PropInfo(2, 50, 50)));
 
             Register(61, new ItemPropertyInfo(AosAttribute.BalancedWeapon, 1072792, 150, typeof(RelicFragment), typeof(Amber), typeof(EssenceBalance), 0, 1, 1, 1112047,
-                new PropInfo(1, 1, 1), new PropInfo(2, 1, 1)));
+               new PropInfo(2, 1, 1)));            
 
             // Non-Imbuable, Non-Loot
             Register(62, new ItemPropertyInfo("SearingWeapon", 1151183, 150, 0, 1, 1));
+
+            Register(63, new ItemPropertyInfo(AosAttribute.BalancedWeapon, 1072792, 100, typeof(RelicFragment), typeof(Amber), typeof(EssenceBalance), 0, 1, 1, 1153740,
+                new PropInfo(1, 1, 1)));
 
             // Slayers
             Register(101, new ItemPropertyInfo(SlayerName.OrcSlaying, 1079741, 100, typeof(MagicalResidue), typeof(Emerald), typeof(WhitePearl), 0, 1, 1, 1111977, new PropInfo(1, 1, 1), new PropInfo(2, 1, 1)));
@@ -813,9 +816,17 @@ namespace Server.Items
         {
             if (Table.ContainsKey(id))
             {
-                if (loot && id >= 151 && id <= 183)
+                if (loot)
                 {
-                    return 5;
+                    if (id >= 151 && id <= 183)
+                    {
+                        return 5;
+                    }
+
+                    if (id == 21)
+                    {
+                        return 10;
+                    }
                 }
 
                 PropInfo info = Table[id].GetItemTypeInfo(GetItemType(item));
@@ -1069,7 +1080,7 @@ namespace Server.Items
                 return LootTable[type];
             }
 
-            return null;
+            return new List<int>();
         }
 
         public static void BuildLootTables()
@@ -1187,7 +1198,8 @@ namespace Server.Items
                             return item is BaseWeapon && item.Layer == Layer.TwoHanded;
                         case 220: // Reactive Paralyze Armor
                             return item is BaseShield;
-                        case 61:  // Balanced
+                        case 63:  // Balanced
+                        case 61:
                             return item.Layer == Layer.TwoHanded;
                         case 40:  // UBWS
                             return GetItemType(item) == ItemType.Melee;
